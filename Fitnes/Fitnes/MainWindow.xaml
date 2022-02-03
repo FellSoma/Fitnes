@@ -1,0 +1,68 @@
+﻿<Window x:Class="Fitnes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fitnes"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+         Height="100"
+        Width="190"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border Background="Transparent"
+            CornerRadius="20">
+
+            <Border HorizontalAlignment="Center"
+                        Width="190"
+                        Height="100"
+                        Background="Transparent">
+                <Grid HorizontalAlignment="Center"
+                         VerticalAlignment="Center">
+
+                    <TextBlock Text="Fitnes."
+                                  Name="FirstLogo"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  FontFamily="#Fonts/Lato" 
+                                  FontWeight="Bold"
+                                  Visibility="Visible"
+                                  FontSize="45"
+                                  Foreground="White"/>
+
+                    <TextBlock Text="Fitnes.."
+                                  Name="SecondLogo"
+                                  Visibility="Hidden"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  FontFamily="#Fonts/Lato" 
+                                  FontWeight="Bold"
+                                  FontSize="45"
+                                  Foreground="White" 
+                                  Margin="6,0,-7,0"/>
+
+                    <TextBlock Text="Fitnes..."
+                                  Name="FinishLogo"
+                                  Visibility="Hidden"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  FontFamily="#Fonts/Lato" 
+                                  FontWeight="Bold"
+                                  FontSize="45"
+                                  Margin="17,0,-8,0"
+                                  Foreground="White"/>
+
+
+
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+
+</Window>
+ 
+
