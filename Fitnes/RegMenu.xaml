@@ -1,0 +1,198 @@
+﻿<Window x:Class="Fitnes.RegMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fitnes"
+        mc:Ignorable="d"
+        Title="RegMenu" 
+        Height="550"
+        Width="400"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+        <Style TargetType="PasswordBox"
+            x:Key="PasswordBx">
+            <Setter Property="Margin" Value="0,10,0,40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#CFCFCF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+
+            <Setter Property="Foreground" Value="#CFCFCF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+
+                        <Grid x:Name="root" Width="230"
+                              Height="40"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="background" CornerRadius="10"
+                                        Background="#353340"
+                                        Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"                                         
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Margin="6,9,0,6"
+                                          FontSize="15"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Border Background="#272537"
+            CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Name="ToolBar"
+                  MouseDown="ToolBar_MouseDown"
+                  Background="Transparent">
+
+                <Button Content="X"
+                        Width="14"
+                        HorizontalAlignment="Right"
+                        Margin="0,4,14,3"
+                                     
+                        FontFamily="Fonts/#Lato"
+                        Click="close"
+                        Style="{StaticResource CloseBt}"/>
+
+                <Button Content="__"
+                        Width="13"
+                        HorizontalAlignment="Right"
+                        Margin="0,3,33,7"                                
+                        FontFamily="Fonts/#Lato"
+                        Click="windowState"
+                        Style="{StaticResource CloseBt}"/>
+            </Grid>
+
+
+            <StackPanel Orientation="Vertical"
+                            Grid.Row="1">
+
+                <TextBlock                  
+                        Text="Fitnes"
+                        Foreground="White"
+                        FontSize="35"
+                        HorizontalAlignment="Center"
+                        Margin="0,15,0,15"
+                        FontFamily="Fonts/#Lato"/>
+
+               
+                
+                <TextBox                   
+                    Height="40"
+                    Name="Email"
+                    Width="230"
+                    Margin="0,0,0,10"                   
+                    FontFamily="Fonts/#Lato"
+                    Style="{StaticResource EmailTb}"/>
+                
+                <TextBox                   
+                    Height="40"
+                    Width="230"
+                    Margin="0,0,0,0"
+                    Name="Логин"    
+                    FontFamily="Fonts/#Lato"
+                    Style="{StaticResource EmailTb}"/>
+                
+                <PasswordBox                  
+                    Height="40"
+                    Width="230"
+                    Foreground="#CFCFCF"
+                    Margin="0,10,0,10"
+                    Style="{StaticResource PasswordBx}"
+                    Name="passwordBx2"
+                    PasswordChanged="onPasswordChenged"/>
+
+                <PasswordBox                  
+                    Height="40"
+                    Width="230"
+                    Margin="0"
+                    Foreground="#CFCFCF"
+                    Style="{StaticResource PasswordBx}"
+                    Name="passwordBx"
+                    PasswordChanged="onPasswordChenged"/>
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="Images/28ivw.png"
+                        Margin="60,10,10,10"/>
+                    
+                    <TextBox                   
+                    Height="40"
+                    Width="130"
+                    Margin="0,0,0,0"
+                    Name="Capcha"    
+                    FontFamily="Fonts/#Lato"
+                    Style="{StaticResource EmailTb}"/>
+                    
+                </StackPanel>
+                
+
+                <!--<Button
+                    Content="Войти"
+                    Height="30"
+                    Width="230"
+                    Click="entrance"
+                    Style="{StaticResource OrangeButton}"/>-->
+
+                <TextBlock
+                    Text="Здесь юудит ошибки"
+                    Margin="20,10,15,20"
+                    FontSize="15"
+                    Height="72"
+                    Foreground="#FFB21C1C"/>
+
+                <Button
+                    Click="Loading"
+                    Content="Регистрация"
+                    Height="40"
+                    Width="270"
+                    Margin="15,0,15,0"
+                    Style="{StaticResource OrangeButton}"/>
+
+            </StackPanel>
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Подтверждение пароля"
+                       VerticalAlignment="Center"                                       
+                       Margin="94,232,0,273"  
+                       FontSize="15"
+                       Foreground="DarkGray"
+                       Name="WaterMark"                                       
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+            </TextBlock>
+
+           
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Пароль"
+                       VerticalAlignment="Center"                                       
+                       Margin="94,181,0,324"  
+                       FontSize="15"
+                       Foreground="DarkGray"
+                       Name="WaterMark1"                                       
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+                
+            </TextBlock>
+
+        </Grid>
+
+
+    </Border>
+</Window>
