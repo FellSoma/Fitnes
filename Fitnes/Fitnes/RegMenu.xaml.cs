@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Fitnes
 {
@@ -19,10 +11,16 @@ namespace Fitnes
     /// </summary>
     public partial class RegMenu : Window
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        int sec = 0;
         public RegMenu()
         {
             InitializeComponent();
+            timer.Interval = TimeSpan.FromSeconds(5);
+
+
         }
+        int trys = 0;
         string name;
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -38,7 +36,7 @@ namespace Fitnes
 
         private void PasswordBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-           
+
         }
 
         private void onPasswordChenged(object sender, RoutedEventArgs e)
@@ -114,8 +112,25 @@ namespace Fitnes
             {
                 ErrorBlock.Text = "Капчи не совподают \n возможно вы робот";
                 newImage();
+                trys++;
+                if (trys == 5)
+                {
+                    timer.Start();
+                    regButton.IsEnabled = false;
+                    timer.Tick += timer_Tick;
+
+                    ErrorBlock.Text = "Вы ввели слишком много правельных капч \nповторите попытку через 5 секунд";
+                }
             }
             return false;
+        }
+
+
+        public void timer_Tick(object sender, EventArgs e)
+        {
+            regButton.IsEnabled = true;
+            trys = 0;
+            timer.Stop();
         }
 
         public void newImage()
@@ -129,9 +144,9 @@ namespace Fitnes
                "pack://application:,,,/Fitnes;component/Images/pexpopti.png",
                "pack://application:,,,/Fitnes;component/Images/plings.png"
             };
-            if(CapchaImage.Source.ToString() != imgNames[number] )
+            if (CapchaImage.Source.ToString() != imgNames[number])
             {
-                name = imgNames[number];   
+                name = imgNames[number];
                 CapchaImage.Source = BitmapFrame.Create(new Uri(@imgNames[number]));
             }
             else
@@ -144,8 +159,8 @@ namespace Fitnes
         {
             string s = CapchaImage.Source.ToString();
             char[] separators = new char[] { '{', ':', '/', ',', ';', '.', '}' };
-            string[] subs = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);           
-            name =subs[5];
+            string[] subs = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            name = subs[5];
             //5 элемен в масиве 
 
         }

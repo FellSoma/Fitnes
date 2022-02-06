@@ -183,7 +183,7 @@
                 
                 <TextBlock
                     Text="Здесь юудит ошибки"
-                    Margin="20,10,15,20"
+                    Margin="50,10,15,20"
                     FontSize="15"
                     Height="72"
                     Name="ErrorBlock"
@@ -193,6 +193,7 @@
                     Click="regisry"
                     Content="Регистрация"
                     Height="40"
+                    Name="regButton"
                     Width="270"
                     Margin="15,0,15,0"
                     Style="{StaticResource OrangeButton}"/>
