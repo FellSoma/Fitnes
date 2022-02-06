@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="Theme/OtherButtons.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonClose.xaml"/>
                 <ResourceDictionary Source="Theme/PasswordTb.xaml"/>
-                <ResourceDictionary Source="Theme/EmailTb.xaml"/>
+               
                 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

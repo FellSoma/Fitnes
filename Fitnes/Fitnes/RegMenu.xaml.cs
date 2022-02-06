@@ -95,5 +95,25 @@ namespace Fitnes
             Window g = new RegMenu();
             g.Show();
         }
+
+        private void regisry(object sender, RoutedEventArgs e)
+        {
+            Boolean check = false;
+            check = checkCapcha(check);
+        }
+
+        public bool checkCapcha(Boolean check)
+        {
+           /* if(TbCapcha.Text==Capcha.Tag.ToString())
+            {
+                return true;
+            }
+            else
+            {
+                ErrorBlock.Text = "Капчи не совподают \n возможно вы робот";
+               
+            }*/
+            return false;
+        }
     }
 }

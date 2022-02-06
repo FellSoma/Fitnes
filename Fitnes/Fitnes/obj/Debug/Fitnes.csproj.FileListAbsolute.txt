@@ -27,3 +27,31 @@ C:\Users\nfeli\OneDrive\Рабочий стол\Курсач\Fitnes\Fitnes\obj\D
 C:\Users\nfeli\OneDrive\Рабочий стол\Курсач\Fitnes\Fitnes\obj\Debug\Home.baml
 C:\Users\nfeli\OneDrive\Рабочий стол\Курсач\Fitnes\Fitnes\obj\Debug\RegMenu.g.cs
 C:\Users\nfeli\OneDrive\Рабочий стол\Курсач\Fitnes\Fitnes\obj\Debug\RegMenu.baml
+I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.exe.config
+I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.exe
+I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.pdb
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csprojAssemblyReference.cache
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\ButtonClose.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\MenuButtonTheme.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\OtherButtons.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\PasswordTb.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\TextBoxTheme.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Home.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\MainWindow.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\RegMenu.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\SiningMenu.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\Theme\PasswordTb.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\App.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes_MarkupCompile.cache
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes_MarkupCompile.lref
+I:\Git\Fitnes\Fitnes\obj\Debug\App.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Home.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\MainWindow.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\RegMenu.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\SiningMenu.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.g.resources
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.Properties.Resources.resources
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.GenerateResource.cache
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CoreCompileInputs.cache
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.exe
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.pdb

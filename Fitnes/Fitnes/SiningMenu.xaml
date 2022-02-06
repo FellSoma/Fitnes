@@ -14,7 +14,7 @@
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Activated="Window_Activated">
     <Window.Resources>
-
+        <!--PasswordBoxes-->
         <Style TargetType="PasswordBox"
             x:Key="PasswordBx">
             <Setter Property="Margin" Value="0,10,0,30"/>
@@ -50,6 +50,44 @@
                 </Setter.Value>
             </Setter>
         </Style>
+      <!--Textboxes-->
+        <Style TargetType="TextBox"
+            x:Key="Textboxes">
+            <Setter Property="Margin" Value="0,10,0,30"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#CFCFCF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+
+            <Setter Property="Foreground" Value="#CFCFCF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Grid x:Name="root" Width="230"
+                              Height="40"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="background" CornerRadius="10"
+                                        Background="#353340"
+                                        Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"                                         
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Margin="6,9,0,6"
+                                          FontSize="15"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
 
     </Window.Resources>
     <Border Background="#272537"
@@ -95,14 +133,13 @@
 
                 <TextBox                   
                     Height="40"
-                    Foreground="DarkGray"                       
-                    Text="{Binding Path=Description}"
+                    Foreground="DarkGray"
                     Width="230"
-                    Margin="0,50,0,10"
+                    Margin="0,50,0,10"                  
                     FocusableChanged="emptyMethod"
                     FontFamily="Fonts/#Lato"
-                    Name="Логин"
-                    Style="{StaticResource EmailTb}"/>
+                    Name="Login"
+                    Style="{StaticResource Textboxes}"/>
 
                 <PasswordBox                  
                     Height="40"
@@ -135,6 +172,8 @@
 
             </StackPanel>
 
+           
+            
             <TextBlock IsHitTestVisible="False"
                        Text="Пароль"
                        VerticalAlignment="Center"                                       
@@ -144,6 +183,27 @@
                        Name="WaterMark"                                       
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
             </TextBlock>
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Логин"
+                       VerticalAlignment="Center"                                       
+                       Margin="93,120,0,385"  
+                       FontSize="15"
+                       Foreground="DarkGray"                                       
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
 
         </Grid>
 

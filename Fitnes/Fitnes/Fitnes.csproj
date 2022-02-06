@@ -93,10 +93,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Theme\EmailTb.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,7 +139,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\28ivw.png" />
+    <Resource Include="Images\prabi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\forni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pexpopti.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\plings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -50,6 +50,43 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--Textboxes-->
+        <Style TargetType="TextBox"
+            x:Key="Textboxes">
+            <Setter Property="Margin" Value="0,10,0,30"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#CFCFCF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+
+            <Setter Property="Foreground" Value="#CFCFCF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Grid x:Name="root" 
+                              Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="background" CornerRadius="10"
+                                    Background="#353340"
+                                    Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"                                         
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Margin="6,9,0,6"
+                                          FontSize="15"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Window.Resources>
     <Border Background="#272537"
@@ -86,12 +123,12 @@
                             Grid.Row="1">
 
                 <TextBlock                  
-                        Text="Fitnes"
-                        Foreground="White"
-                        FontSize="35"
-                        HorizontalAlignment="Center"
-                        Margin="0,15,0,15"
-                        FontFamily="Fonts/#Lato"/>
+                    Text="Fitnes"
+                    Foreground="White"
+                    FontSize="35"
+                    HorizontalAlignment="Center"
+                    Margin="0,15,0,15"
+                    FontFamily="Fonts/#Lato"/>
 
                
                 
@@ -101,15 +138,15 @@
                     Width="230"
                     Margin="0,0,0,10"                   
                     FontFamily="Fonts/#Lato"
-                    Style="{StaticResource EmailTb}"/>
+                    Style="{StaticResource Textboxes}"/>
                 
                 <TextBox                   
                     Height="40"
                     Width="230"
-                    Margin="0,0,0,0"
-                    Name="Логин"    
+                    Margin="0,0,0,0"   
+                    Name="Login" 
                     FontFamily="Fonts/#Lato"
-                    Style="{StaticResource EmailTb}"/>
+                    Style="{StaticResource Textboxes}"/>
                 
                 <PasswordBox                  
                     Height="40"
@@ -130,36 +167,30 @@
                     PasswordChanged="onPasswordChenged"/>
                 <StackPanel Orientation="Horizontal">
                     <Image 
-                        Source="Images/28ivw.png"
-                        Margin="60,10,10,10"/>
-                    
+                        Source="Images/prabi.png"
+                        x:Name="CapchaImage"
+                        Margin="60,10,10,10" Height="46" Width="127"/>
+
                     <TextBox                   
                     Height="40"
                     Width="130"
                     Margin="0,0,0,0"
-                    Name="Capcha"    
+                    Name="Capcha" 
                     FontFamily="Fonts/#Lato"
-                    Style="{StaticResource EmailTb}"/>
-                    
+                    Style="{StaticResource Textboxes}"/>
+
                 </StackPanel>
                 
-
-                <!--<Button
-                    Content="Войти"
-                    Height="30"
-                    Width="230"
-                    Click="entrance"
-                    Style="{StaticResource OrangeButton}"/>-->
-
                 <TextBlock
                     Text="Здесь юудит ошибки"
                     Margin="20,10,15,20"
                     FontSize="15"
                     Height="72"
+                    Name="ErrorBlock"
                     Foreground="#FFB21C1C"/>
 
                 <Button
-                    Click="Loading"
+                    Click="regisry"
                     Content="Регистрация"
                     Height="40"
                     Width="270"
@@ -177,9 +208,7 @@
                        Name="WaterMark"                                       
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
             </TextBlock>
-
-           
-
+ 
             <TextBlock IsHitTestVisible="False"
                        Text="Пароль"
                        VerticalAlignment="Center"                                       
@@ -189,6 +218,66 @@
                        Name="WaterMark1"                                       
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
                 
+            </TextBlock>
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Логин"
+                       VerticalAlignment="Center"                                       
+                       Margin="94,131,0,374"  
+                       FontSize="15"
+                       Foreground="DarkGray"                          
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Email"
+                       VerticalAlignment="Center"                                       
+                       Margin="94,82,0,423"   
+                       FontSize="15"
+                       Foreground="DarkGray"                                     
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Email}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock IsHitTestVisible="False"
+                       Text="Код"
+                       VerticalAlignment="Center"                                       
+                       Margin="207,284,0,221"  
+                       FontSize="15"
+                       Foreground="DarkGray"                                      
+                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Capcha}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
             </TextBlock>
 
         </Grid>
