@@ -23,7 +23,7 @@ namespace Fitnes
         {
             InitializeComponent();
         }
-
+        string name;
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             Window g = new SiningMenu();
@@ -104,16 +104,50 @@ namespace Fitnes
 
         public bool checkCapcha(Boolean check)
         {
-           /* if(TbCapcha.Text==Capcha.Tag.ToString())
+            caphaName();
+            if (Capcha.Text == name)
             {
+                CapchaImage.Source.ToString();
                 return true;
             }
             else
             {
                 ErrorBlock.Text = "Капчи не совподают \n возможно вы робот";
-               
-            }*/
+                newImage();
+            }
             return false;
+        }
+
+        public void newImage()
+        {
+            Random rnd = new Random();
+            int number = rnd.Next(0, 3);
+            string[] imgNames = new string[4]
+            {
+               "pack://application:,,,/Fitnes;component/Images/prabi.png",
+               "pack://application:,,,/Fitnes;component/Images/forni.png",
+               "pack://application:,,,/Fitnes;component/Images/pexpopti.png",
+               "pack://application:,,,/Fitnes;component/Images/plings.png"
+            };
+            if(CapchaImage.Source.ToString() != imgNames[number] )
+            {
+                name = imgNames[number];   
+                CapchaImage.Source = BitmapFrame.Create(new Uri(@imgNames[number]));
+            }
+            else
+            {
+                newImage();
+            }
+        }
+
+        public void caphaName()
+        {
+            string s = CapchaImage.Source.ToString();
+            char[] separators = new char[] { '{', ':', '/', ',', ';', '.', '}' };
+            string[] subs = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);           
+            name =subs[5];
+            //5 элемен в масиве 
+
         }
     }
 }
