@@ -96,8 +96,50 @@ namespace Fitnes
 
         private void regisry(object sender, RoutedEventArgs e)
         {
-            Boolean check = false;
-            check = checkCapcha(check);
+            if(Email.Text !="" || Login.Text != "" || passwordBx.Password.Length != 0 || passwordBx2.Password.Length != 0)
+            {
+            emailCheck();
+            }
+            else
+            {
+                ErrorBlock.Text = "Заполните поля данных";
+            }
+        }
+
+        public void emailCheck()
+        {
+            if(Email.Text.Length>5 || Email.Text.Contains("@")||Email.Text.Contains("."))
+            {
+                passwordLenght();
+            }    
+            else {
+                ErrorBlock.Text = "Email введён некоректно проверте\nуказаны ли все знаки @ , . ";
+            }
+            
+        }
+        public void passwordLenght()
+        {
+            if(passwordBx.Password.Length >=6 || passwordBx2.Password.Length >= 6)
+            {
+                passwordGemeni();
+            }
+            else
+            {
+                ErrorBlock.Text = "пароль дожнен быть не меннее 6 символов";
+            }
+        }
+
+        public void passwordGemeni()
+        {
+            if (passwordBx.Password==passwordBx2.Password)
+            {
+                Boolean check = false;
+                check = checkCapcha(check);
+            }
+            else
+            {
+                ErrorBlock.Text = "пароли не совбадают";
+            }
         }
 
         public bool checkCapcha(Boolean check)
@@ -110,7 +152,7 @@ namespace Fitnes
             }
             else
             {
-                ErrorBlock.Text = "Капчи не совподают \n возможно вы робот";
+                ErrorBlock.Text = "Капчи не совподают \nвозможно вы робот";
                 newImage();
                 trys++;
                 if (trys == 5)

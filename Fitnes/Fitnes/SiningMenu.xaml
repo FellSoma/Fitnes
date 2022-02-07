@@ -150,7 +150,7 @@
                     PasswordChanged="onPasswordChenged"/>
                 <TextBlock
                     Text="Здесь юудит ошибки"
-                    Margin="20,0,15,20"
+                    Margin="50,0,15,20"
                     FontSize="15"
                     Height="72"
                     Foreground="#FFB21C1C"/>

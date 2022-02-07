@@ -21,7 +21,7 @@ namespace Fitnes
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer = new DispatcherTimer();
+       DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
