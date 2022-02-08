@@ -188,6 +188,13 @@
                     Height="72"
                     Name="ErrorBlock"
                     Foreground="#FFB21C1C"/>
+                <TextBlock
+                    Text="Здесь юудит ошибки"
+                    Margin="50,10,15,20"
+                    FontSize="15"
+                    Height="30"
+                    x:Name="exempleText"
+                    Foreground="#FFB21C1C"/>
 
                 <Button
                     Click="regisry"

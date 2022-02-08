@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -13,12 +15,20 @@ namespace Fitnes
     {
         DispatcherTimer timer = new DispatcherTimer();
         int sec = 0;
+        ApplicationContext db;
         public RegMenu()
         {
             InitializeComponent();
             timer.Interval = TimeSpan.FromSeconds(5);
+            db = new ApplicationContext();
 
-
+            List<User> users = db.Users.ToList();
+            string str = "";
+            foreach (User  user  in users)
+            {
+                str += "Login: " + user.login + " | ";
+            }
+            exempleText.Text = str;
         }
         int trys = 0;
         string name;
@@ -39,6 +49,7 @@ namespace Fitnes
 
         }
 
+        bool check;
         private void onPasswordChenged(object sender, RoutedEventArgs e)
         {
             if (passwordBx.Password.Length > 0)
@@ -98,7 +109,14 @@ namespace Fitnes
         {
             if(Email.Text !="" || Login.Text != "" || passwordBx.Password.Length != 0 || passwordBx2.Password.Length != 0)
             {
-            emailCheck();
+                if(check==true)
+                {
+                    User user = new User(Login.Text ,Email.Text,passwordBx.Password);
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                }
+                else
+                emailCheck();
             }
             else
             {
@@ -128,12 +146,11 @@ namespace Fitnes
                 ErrorBlock.Text = "пароль дожнен быть не меннее 6 символов";
             }
         }
-
         public void passwordGemeni()
         {
             if (passwordBx.Password==passwordBx2.Password)
             {
-                Boolean check = false;
+                check = false;
                 check = checkCapcha(check);
             }
             else
@@ -142,7 +159,7 @@ namespace Fitnes
             }
         }
 
-        public bool checkCapcha(Boolean check)
+        public bool checkCapcha(bool check)
         {
             caphaName();
             if (Capcha.Text == name)

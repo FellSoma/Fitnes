@@ -55,3 +55,13 @@ I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.GenerateResource.cache
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CoreCompileInputs.cache
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.exe
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.pdb
+I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.db
+I:\Git\Fitnes\Fitnes\bin\Debug\EntityFramework.dll
+I:\Git\Fitnes\Fitnes\bin\Debug\EntityFramework.SqlServer.dll
+I:\Git\Fitnes\Fitnes\bin\Debug\System.Data.SQLite.dll
+I:\Git\Fitnes\Fitnes\bin\Debug\System.Data.SQLite.EF6.dll
+I:\Git\Fitnes\Fitnes\bin\Debug\System.Data.SQLite.Linq.dll
+I:\Git\Fitnes\Fitnes\bin\Debug\EntityFramework.xml
+I:\Git\Fitnes\Fitnes\bin\Debug\EntityFramework.SqlServer.xml
+I:\Git\Fitnes\Fitnes\bin\Debug\System.Data.SQLite.xml
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CopyComplete
