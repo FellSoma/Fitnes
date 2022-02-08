@@ -28,12 +28,14 @@
 
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Elysiam"
+            <TextBlock Text="Fitness"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"
-                       FontSize="22"
-                       Margin="20,0,0,0"/>
+                       FontSize="29"
+                       FontWeight="Bold"
+                       FontFamily="#Fonts/Lato"
+                       Margin="20,10,0,0"/>
             <StackPanel Grid.Row="1">
 
                 <RadioButton Content="Home"
@@ -64,9 +66,20 @@
                          Grid.Column="1"
                          Style="{StaticResource ModernTextbox}"/>
 
-            <ContentControl Grid.Row="1"
+            <TabControl Grid.Row="1"
                             Grid.Column="1"
-                            Margin="10"/>
+                            Margin="10"
+                        Style="{StaticResource TabControl}" Background="#FF3D3B4D">
+
+                <TabItem x:Name="home">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="10" Width="10" Fill="Black" />
+                            <TextBlock Margin="3">Смартфоны</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+            </TabControl>
 
         </Grid>
     </Border>

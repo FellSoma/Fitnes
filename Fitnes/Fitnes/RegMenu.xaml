@@ -191,7 +191,7 @@
                 <TextBlock
                     Text="Здесь юудит ошибки"
                     Margin="50,10,15,20"
-                    FontSize="15"
+                    FontSize="9"
                     Height="30"
                     x:Name="exempleText"
                     Foreground="#FFB21C1C"/>

@@ -19,11 +19,12 @@ namespace Fitnes
     /// </summary>
     public partial class SiningMenu : Window
     {
+        ApplicationContext db;
         public SiningMenu()
         {
             InitializeComponent();
-            
-           
+            db = new ApplicationContext();
+
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -63,8 +64,21 @@ namespace Fitnes
 
         private void entrance(object sender, RoutedEventArgs e)
         {
-            Window g = new SiningMenu();
+            User authUser = null;
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                authUser = context.Users.Where(b=>b.login==Login.Text && b.Pass==passwordBx.Password).FirstOrDefault();
+            }
+            if(authUser!=null)
+            {
+
+            Window g = new Home();
             g.Show();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
         }
 
         private void windowState(object sender, RoutedEventArgs e)
