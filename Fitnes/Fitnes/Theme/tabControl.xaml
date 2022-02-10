@@ -10,6 +10,24 @@
                     <Border CornerRadius="10"
                             Background="#FF3D3B4D"
                             Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <Grid Background="#FF3D3B4D">
+                            
+                           <TabControl 
+                               Background="#FF3D3B4D"
+                               BorderThickness="0"
+                               Width="100"
+                               Height="100">
+                               
+                           </TabControl>
+                            <TabItem 
+                                Background="#FF3D3B4D">
+                                <TabItem.Content
+                                   >
+                                    <StackPanel/>
+                                </TabItem.Content>
+                               
+                           </TabItem>
+                        </Grid>
                         
                     </Border>
                 </ControlTemplate>

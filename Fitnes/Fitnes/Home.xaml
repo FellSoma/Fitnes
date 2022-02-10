@@ -13,6 +13,51 @@
         Background="Transparent"
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="TabStripPlacement" Value="Top" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="#FF302D44"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            
+
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="BorderBrush" Value="Pink"/>
+            <Setter Property="Background" Value="#FF302D44"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="PART_Border" Background="{TemplateBinding Background}"
+                               
+                                BorderBrush="Black" Margin="0,0,0,0" 
+                                CornerRadius="5,5,5,5" 
+                                Padding="50,0,50,0">
+                            <ContentPresenter ContentSource="Header" Margin="5" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FF3B3468"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="false">
+                                <Setter Property="Background" Value="#FF363449"/>
+                                <Setter Property="Foreground" Value="DarkGray"/>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Border Background="#272537"
             CornerRadius="20">
         <Grid>
@@ -40,12 +85,14 @@
 
                 <RadioButton Content="Home"
                              Height="50"
+                             IsChecked="true"
                              FontSize="14"
                              Foreground="White"
                              
                              Style="{StaticResource MenuButtonTheme}"/>
 
-                <RadioButton Content="Photo"
+                <RadioButton Content="Профиль"
+                             x:Name="Profile"
                              Height="50"
                              FontSize="14"
                              Foreground="White"
@@ -66,20 +113,36 @@
                          Grid.Column="1"
                          Style="{StaticResource ModernTextbox}"/>
 
-            <TabControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10"
-                        Style="{StaticResource TabControl}" Background="#FF3D3B4D">
+            <Border
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="15"
+                Background="#FF302D44"
+                CornerRadius="10">
+                
+            <TabControl 
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="5"
+                BorderThickness="0,0,0,0"
+                BorderBrush="#353340">
 
-                <TabItem x:Name="home">
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Ellipse Height="10" Width="10" Fill="Black" />
-                            <TextBlock Margin="3">Смартфоны</TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
+                <TabItem x:Name="home" Header="Новости" >
+                    
+                </TabItem>
+
+                <TabItem x:Name="profile" Header="FAQs">
+                    <TabItem.Content>
+                        <StackPanel Margin="10" Orientation="Vertical">
+                                <TextBlock Text="Здесь будут вопросы и ответы только подожди"/>
+
+
+                            </StackPanel>
+                    </TabItem.Content>
                 </TabItem>
             </TabControl>
+                
+            </Border>
 
         </Grid>
     </Border>

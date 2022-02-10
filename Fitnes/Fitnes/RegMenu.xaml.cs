@@ -22,6 +22,8 @@ namespace Fitnes
             timer.Interval = TimeSpan.FromSeconds(5);
             db = new ApplicationContext();
 
+            newImage();
+
             List<User> users = db.Users.ToList();
             string str = "";
             foreach (User  user  in users)
