@@ -73,20 +73,21 @@
 
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Fitness"
+            <TextBlock Text="NihgtOrange"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="29"
                        FontWeight="Bold"
                        FontFamily="#Fonts/Lato"
-                       Margin="20,10,0,0"/>
+                       Margin="10,10,0,0"/>
             <StackPanel Grid.Row="1">
 
                 <RadioButton Content="Home"
                              Height="50"
                              IsChecked="true"
                              FontSize="14"
+                             Margin="0,16,0,0"
                              Foreground="White"
                              
                              Style="{StaticResource MenuButtonTheme}"/>
@@ -105,10 +106,17 @@
                              Style="{StaticResource MenuButtonTheme}"/>
 
             </StackPanel>
+            <Image 
+                        Source="Images/Logo.png"
+                        Width="80"
+                        Height="80"
+                        Grid.Column="1" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
             <TextBox Width="250"
                          Height="40"
                          VerticalAlignment="Center"
-                         HorizontalAlignment="Left"
+                         HorizontalAlignment="Center"
                          Margin="5"
                          Grid.Column="1"
                          Style="{StaticResource ModernTextbox}"/>

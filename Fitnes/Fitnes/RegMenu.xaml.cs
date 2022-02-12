@@ -24,13 +24,8 @@ namespace Fitnes
 
             newImage();
 
-            List<User> users = db.Users.ToList();
-            string str = "";
-            foreach (User  user  in users)
-            {
-                str += "Login: " + user.login + " | ";
-            }
-            exempleText.Text = str;
+           
+           
         }
         int trys = 0;
         string name;

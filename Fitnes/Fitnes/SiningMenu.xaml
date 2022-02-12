@@ -123,19 +123,27 @@
             <StackPanel Orientation="Vertical"
                             Grid.Row="1">
 
+                <StackPanel Orientation="Horizontal">
+                    
                 <TextBlock                  
-                        Text="Fitnes"
+                        Text="NihgtOrange"
                         Foreground="White"
                         FontSize="35"
                         HorizontalAlignment="Center"
-                        Margin="0,20,0,0"
+                        Margin="60,20,0,0"
                         FontFamily="Fonts/#Lato"/>
+                    <Image 
+                        Source="Images/Logo.png"
+                        Width="80"
+                        Height="80"/>
+
+                </StackPanel> 
 
                 <TextBox                   
                     Height="40"
                     Foreground="DarkGray"
                     Width="230"
-                    Margin="0,50,0,10"                  
+                    Margin="0,30,0,10"                  
                     FocusableChanged="emptyMethod"
                     FontFamily="Fonts/#Lato"
                     Name="Login"
@@ -149,7 +157,7 @@
                     Name="passwordBx"
                     PasswordChanged="onPasswordChenged"/>
                 <TextBlock
-                    Text="Здесь юудит ошибки"
+                    Text=""
                     Margin="50,0,15,20"
                     FontSize="15"
                     Height="72"

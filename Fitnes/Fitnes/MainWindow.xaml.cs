@@ -25,7 +25,7 @@ namespace Fitnes
         public MainWindow()
         {
             InitializeComponent();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Interval = TimeSpan.FromMilliseconds(800);
             timer.Tick += timer_Tick;
             timer.Start();
         }
@@ -41,28 +41,21 @@ namespace Fitnes
                 if (sec >= 2)
                 {
                     if (sec >= 3)
-                    {
-                        FirstLogo.Visibility = Visibility.Visible;
-                        SecondLogo.Visibility = Visibility.Collapsed;
-                        FinishLogo.Visibility = Visibility.Collapsed;
-                        if (sec >= 4)
-                        {
-                            sec = 0;
-                            timer.Stop();
-                            Window g = new SiningMenu();
-                            g.Show();
-                            this.Close();
-                        }
-                        return;
+                    {         
+                       sec = 0;
+                       timer.Stop();
+                       Window g = new SiningMenu();
+                       g.Show();
+                       this.Close(); 
                     }
-                    FirstLogo.Visibility = Visibility.Collapsed;
-                    SecondLogo.Visibility = Visibility.Collapsed;
+                    FirstLogo.Visibility = Visibility.Visible;
+                    SecondLogo.Visibility = Visibility.Visible;
                     FinishLogo.Visibility = Visibility.Visible;
                     return;
                 }
-                FirstLogo.Visibility = Visibility.Collapsed;
+                FirstLogo.Visibility = Visibility.Visible;
                 SecondLogo.Visibility = Visibility.Visible;
-                FinishLogo.Visibility = Visibility.Collapsed;
+                FinishLogo.Visibility = Visibility.Hidden;
                 return;
             }
 

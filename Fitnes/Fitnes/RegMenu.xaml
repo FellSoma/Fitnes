@@ -121,22 +121,28 @@
 
             <StackPanel Orientation="Vertical"
                             Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
 
-                <TextBlock                  
-                    Text="Fitnes"
-                    Foreground="White"
-                    FontSize="35"
-                    HorizontalAlignment="Center"
-                    Margin="0,15,0,15"
-                    FontFamily="Fonts/#Lato"/>
+                    <TextBlock                  
+                        Text="NihgtOrange"
+                        Foreground="White"
+                        FontSize="35"
+                        HorizontalAlignment="Center"
+                        Margin="60,20,0,0"
+                        FontFamily="Fonts/#Lato"/>
+                    <Image 
+                        Source="Images/Logo.png"
+                        Width="80"
+                        Height="80"/>
 
-               
-                
+                </StackPanel>
+
+
                 <TextBox                   
                     Height="40"
                     Name="Email"
                     Width="230"
-                    Margin="0,0,0,10"                   
+                    Margin="0,10,0,10"                   
                     FontFamily="Fonts/#Lato"
                     Style="{StaticResource Textboxes}"/>
                 
@@ -182,18 +188,11 @@
                 </StackPanel>
                 
                 <TextBlock
-                    Text="Здесь юудит ошибки"
+                    Text=""
                     Margin="50,10,15,20"
                     FontSize="15"
                     Height="72"
                     Name="ErrorBlock"
-                    Foreground="#FFB21C1C"/>
-                <TextBlock
-                    Text="Здесь юудит ошибки"
-                    Margin="50,10,15,20"
-                    FontSize="9"
-                    Height="30"
-                    x:Name="exempleText"
                     Foreground="#FFB21C1C"/>
 
                 <Button
@@ -210,7 +209,7 @@
             <TextBlock IsHitTestVisible="False"
                        Text="Подтверждение пароля"
                        VerticalAlignment="Center"                                       
-                       Margin="94,232,0,273"  
+                       Margin="94,248,0,257"  
                        FontSize="15"
                        Foreground="DarkGray"
                        Name="WaterMark"                                       
@@ -220,7 +219,7 @@
             <TextBlock IsHitTestVisible="False"
                        Text="Пароль"
                        VerticalAlignment="Center"                                       
-                       Margin="94,181,0,324"  
+                       Margin="94,200,0,305"  
                        FontSize="15"
                        Foreground="DarkGray"
                        Name="WaterMark1"                                       
@@ -231,7 +230,7 @@
             <TextBlock IsHitTestVisible="False"
                        Text="Логин"
                        VerticalAlignment="Center"                                       
-                       Margin="94,131,0,374"  
+                       Margin="94,151,0,354"  
                        FontSize="15"
                        Foreground="DarkGray"                          
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
@@ -251,7 +250,7 @@
             <TextBlock IsHitTestVisible="False"
                        Text="Email"
                        VerticalAlignment="Center"                                       
-                       Margin="94,82,0,423"   
+                       Margin="94,100,0,405"   
                        FontSize="15"
                        Foreground="DarkGray"                                     
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
@@ -271,7 +270,7 @@
             <TextBlock IsHitTestVisible="False"
                        Text="Код"
                        VerticalAlignment="Center"                                       
-                       Margin="207,284,0,221"  
+                       Margin="205,302,0,203"  
                        FontSize="15"
                        Foreground="DarkGray"                                      
                        HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">

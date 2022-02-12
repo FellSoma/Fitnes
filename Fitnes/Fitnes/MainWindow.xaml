@@ -6,62 +6,93 @@
         xmlns:local="clr-namespace:Fitnes"
         mc:Ignorable="d"
         Title="MainWindow" 
-         Height="100"
-        Width="190"
+        Width="650"
+        Height="200"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Border Background="Transparent"
-            CornerRadius="20">
 
-            <Border HorizontalAlignment="Center"
-                        Width="190"
-                        Height="100"
-                        Background="Transparent">
-                <Grid HorizontalAlignment="Center"
+    <Border 
+            Background="Transparent"
+            Width="650"
+            Height="200">
+
+        <Border  
+               Width="650"
+               Height="200"
+               Background="Transparent" >
+
+            <Grid HorizontalAlignment="Center"
+                      Width="650"
                          VerticalAlignment="Center">
 
-                    <TextBlock Text="Fitnes."
-                                  Name="FirstLogo"
+                <StackPanel 
+                        Width="Auto"
+                        Orientation="Horizontal" Margin="197,0,47,0">
+                    <TextBlock Text="NightOrange"
+                                       x:Name="Logo"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="#Fonts/Lato" 
+                                       FontWeight="Bold"
+                                       Visibility="Visible"
+                                       FontSize="45"
+                                       Foreground="White" Width="279"/>
+                    <Image
+                        Source="Images/Logo.png"
+                        Width="28"
+                        x:Name="FirstLogo"
+                        HorizontalAlignment="Center"
+                        Height="27" 
+                        VerticalAlignment="Bottom"
+                        Visibility="Visible"
+                        Margin="0,0,0,10"/>
+
+                    <Image
+                        Source="Images/Logo.png"
+                        Width="35"
+                        x:Name="SecondLogo"
+                        HorizontalAlignment="Center"
+                        Height="35" 
+                        VerticalAlignment="Bottom"
+                        Visibility="Hidden"
+                        
+                        Margin="0,0,0,10"/>
+
+                    <Image
+                        Source="Images/Logo.png"
+                        Width="45"
+                        x:Name="FinishLogo"
+                        HorizontalAlignment="Center"
+                        Height="45" 
+                        Visibility="Hidden"
+                        
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,0,10"/>
+
+                </StackPanel>
+
+
+                <TextBlock Text="Powered by Felix Niyazov"
+                                  Name="FirstLogo1"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
                                   FontFamily="#Fonts/Lato" 
                                   FontWeight="Bold"
                                   Visibility="Visible"
-                                  FontSize="45"
-                                  Foreground="White"/>
+                                  FontSize="15"
+                                  Foreground="White" Margin="108,52,0,-16"/>
 
-                    <TextBlock Text="Fitnes.."
-                                  Name="SecondLogo"
-                                  Visibility="Hidden"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  FontFamily="#Fonts/Lato" 
-                                  FontWeight="Bold"
-                                  FontSize="45"
-                                  Foreground="White" 
-                                  Margin="6,0,-7,0"/>
-
-                    <TextBlock Text="Fitnes..."
-                                  Name="FinishLogo"
-                                  Visibility="Hidden"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  FontFamily="#Fonts/Lato" 
-                                  FontWeight="Bold"
-                                  FontSize="45"
-                                  Margin="17,0,-8,0"
-                                  Foreground="White"/>
+              
 
 
 
-                </Grid>
-            </Border>
+            </Grid>
         </Border>
-    </Grid>
+    </Border>
+
 
 </Window>
  
