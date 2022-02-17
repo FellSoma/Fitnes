@@ -126,7 +126,7 @@
                 <StackPanel Orientation="Horizontal">
                     
                 <TextBlock                  
-                        Text="NihgtOrange"
+                        Text="NightOrange"
                         Foreground="White"
                         FontSize="35"
                         HorizontalAlignment="Center"
@@ -141,7 +141,7 @@
 
                 <TextBox                   
                     Height="40"
-                    Foreground="DarkGray"
+                    Foreground="#CFCFCF"
                     Width="230"
                     Margin="0,30,0,10"                  
                     FocusableChanged="emptyMethod"

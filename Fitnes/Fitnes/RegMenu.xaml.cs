@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
@@ -14,7 +15,6 @@ namespace Fitnes
     public partial class RegMenu : Window
     {
         DispatcherTimer timer = new DispatcherTimer();
-        int sec = 0;
         ApplicationContext db;
         public RegMenu()
         {
@@ -46,7 +46,7 @@ namespace Fitnes
 
         }
 
-        bool check;
+        bool check=false;
         private void onPasswordChenged(object sender, RoutedEventArgs e)
         {
             if (passwordBx.Password.Length > 0)
@@ -72,10 +72,6 @@ namespace Fitnes
             }
         }
 
-        private void emptyMethod(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
 
         private void entrance(object sender, RoutedEventArgs e)
         {
@@ -102,11 +98,11 @@ namespace Fitnes
             g.Show();
         }
 
-        private void regisry(object sender, RoutedEventArgs e)
+        public void regisry()
         {
-            if(Email.Text !="" || Login.Text != "" || passwordBx.Password.Length != 0 || passwordBx2.Password.Length != 0)
+            if(Email.Text !="" && Login.Text != "" && passwordBx.Password.Length != 0 && passwordBx2.Password.Length != 0)
             {
-                if(check==true)
+                if(check==true && level >0)
                 {
                     User user = new User(Login.Text ,Email.Text,passwordBx.Password);
                     db.Users.Add(user);
@@ -123,7 +119,7 @@ namespace Fitnes
 
         public void emailCheck()
         {
-            if(Email.Text.Length>5 || Email.Text.Contains("@")||Email.Text.Contains("."))
+            if(Email.Text.Length>5 && Email.Text.Contains("@")&&Email.Text.Contains("."))
             {
                 passwordLenght();
             }    
@@ -134,25 +130,117 @@ namespace Fitnes
         }
         public void passwordLenght()
         {
-            if(passwordBx.Password.Length >=6 || passwordBx2.Password.Length >= 6)
+            if(passwordBx.Password.Length >=6 && passwordBx2.Password.Length >= 6)
             {
-                passwordGemeni();
+                someChar();
             }
             else
             {
                 ErrorBlock.Text = "пароль дожнен быть не меннее 6 символов";
             }
         }
+
+        public void someChar()
+        {
+           if(( passwordBx.Password.Contains("@") && passwordBx2.Password.Contains("@")) || (passwordBx.Password.Contains("!") && 
+                passwordBx2.Password.Contains("!")) || (passwordBx.Password.Contains("%") && passwordBx2.Password.Contains("%")))
+           {
+                level++;
+                charLowwerUp();
+           }
+           else
+           {
+                charLowwerUp();
+           }
+        }
+        public void charLowwerUp()
+        {
+            int j = 0;
+            string password = passwordBx.Password;
+            foreach (var item in password)
+            {
+                if(item.ToString()==item.ToString().ToUpper())
+                {
+                    j++;
+                }
+            }
+            if (j == password.Length)
+            {
+                level++;
+                recurringChar();
+            }
+            else recurringChar();
+        }
+
+        public void recurringChar()
+        {
+            int j = 0;
+            string password = passwordBx.Password;
+            for (int i = 0; i < password.Length-1; i++)
+            {
+                if(password[i]==password[++i])
+                {
+                    j++;
+                }
+            }
+            if (j >=3)
+            {
+                passwordGemeni();
+            }
+            else
+            {
+                level++;
+                passwordGemeni();
+            }
+        }
+
         public void passwordGemeni()
         {
             if (passwordBx.Password==passwordBx2.Password)
             {
-                check = false;
+                check = true;
                 check = checkCapcha(check);
+                if(check)
+                {
+                    passwordRateing();
+                }
             }
             else
             {
                 ErrorBlock.Text = "пароли не совбадают";
+            }
+        }
+        int level = 0;
+        //dadadadad
+        public void passwordRateing()
+        {
+            switch (level)
+            {
+                case 0:
+                    {
+                        ErrorBlock.Text = "Используйте специальные символы\n@,%,! ";
+                        passwordRate.Text = "Плохой паролль";
+                        passwordRate.Foreground = Brushes.Red;
+                    }
+                    break;
+                case 1:
+                    {
+                        passwordRate.Text = "Средний паролль";
+                        ErrorBlock.Foreground = Brushes.Green;
+                        passwordRate.Foreground = Brushes.Orange;
+                        ErrorBlock.Text = "Регестрация успешна";
+                        regisry();
+                    }
+                    break;
+                case 2:
+                    {
+                        passwordRate.Text = "Хороший паролль";
+                        passwordRate.Foreground = Brushes.Green;
+                        ErrorBlock.Foreground = Brushes.Green;
+                        ErrorBlock.Text = "Регестрация успешна";
+                        regisry();
+                    }
+                    break;
             }
         }
 
@@ -219,6 +307,20 @@ namespace Fitnes
             name = subs[5];
             //5 элемен в масиве 
 
+        }
+
+
+
+        private void passwordRateing(object sender, System.Windows.Controls.ContextMenuEventArgs e)
+        {
+
+        }
+
+        private void regisryClick(object sender, RoutedEventArgs e)
+        {
+            ErrorBlock.Foreground = Brushes.DarkRed;
+            check = false;
+            regisry();
         }
     }
 }

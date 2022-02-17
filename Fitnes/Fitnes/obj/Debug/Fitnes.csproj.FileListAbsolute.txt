@@ -30,7 +30,6 @@ C:\Users\nfeli\OneDrive\Рабочий стол\Курсач\Fitnes\Fitnes\obj\D
 I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.exe.config
 I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.exe
 I:\Git\Fitnes\Fitnes\bin\Debug\Fitnes.pdb
-I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csprojAssemblyReference.cache
 I:\Git\Fitnes\Fitnes\obj\Debug\Theme\ButtonClose.baml
 I:\Git\Fitnes\Fitnes\obj\Debug\Theme\MenuButtonTheme.baml
 I:\Git\Fitnes\Fitnes\obj\Debug\Theme\OtherButtons.baml
@@ -66,3 +65,5 @@ I:\Git\Fitnes\Fitnes\bin\Debug\EntityFramework.SqlServer.xml
 I:\Git\Fitnes\Fitnes\bin\Debug\System.Data.SQLite.xml
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.CopyComplete
 I:\Git\Fitnes\Fitnes\obj\Debug\Theme\tabControl.baml
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.AssemblyReference.cache
+I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.SuggestedBindingRedirects.cache
