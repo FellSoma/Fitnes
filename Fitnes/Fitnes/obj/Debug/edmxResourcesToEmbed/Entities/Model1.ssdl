@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище FitnessDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FQAs">
+    <Key>
+      <PropertyRef Name="id_FAQ" />
+    </Key>
+    <Property Name="id_FAQ" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="About" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Writer" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Points">
+    <Key>
+      <PropertyRef Name="id_Point" />
+    </Key>
+    <Property Name="id_Point" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_User" />
+    </Key>
+    <Property Name="id_User" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_FAQ" Type="int" />
+    <Property Name="id_Point" Type="int" />
+    <Property Name="Video" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Users_FQAs">
+    <End Role="FQAs" Type="Self.FQAs" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FQAs">
+        <PropertyRef Name="id_FAQ" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_FAQ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Points">
+    <End Role="Points" Type="Self.Points" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Points">
+        <PropertyRef Name="id_Point" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_Point" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище FitnessDBModelContainer">
+    <EntitySet Name="FQAs" EntityType="Self.FQAs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Points" EntityType="Self.Points" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Users_FQAs" Association="Self.FK_Users_FQAs">
+      <End Role="FQAs" EntitySet="FQAs" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Points" Association="Self.FK_Users_Points">
+      <End Role="Points" EntitySet="Points" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

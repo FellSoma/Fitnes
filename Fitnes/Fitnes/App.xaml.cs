@@ -13,5 +13,6 @@ namespace Fitnes
     /// </summary>
     public partial class App : Application
     {
+        public static readonly Entities.FitnessDBEntities DataBase = new Entities.FitnessDBEntities();
     }
 }

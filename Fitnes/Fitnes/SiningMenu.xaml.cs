@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Fitnes
 {
@@ -19,11 +10,12 @@ namespace Fitnes
     /// </summary>
     public partial class SiningMenu : Window
     {
-        ApplicationContext db;
+
+
         public SiningMenu()
         {
             InitializeComponent();
-            db = new ApplicationContext();
+            TestDataGrid.ItemsSource = App.DataBase.Users.ToList();
 
         }
 
@@ -64,16 +56,16 @@ namespace Fitnes
 
         private void entrance(object sender, RoutedEventArgs e)
         {
-            User authUser = null;
-            using (ApplicationContext context = new ApplicationContext())
+            Entities.User authUser = null;
+            using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
             {
-                authUser = context.Users.Where(b=>b.login==Login.Text && b.Pass==passwordBx.Password).FirstOrDefault();
+                authUser = context.Users.Where(b => b.Login == Login.Text && b.Password == passwordBx.Password).FirstOrDefault();
             }
-            if(authUser!=null)
+            if (authUser != null)
             {
 
-            Window g = new Home();
-            g.Show();
+                Window g = new Home();
+                g.Show();
             }
             else
             {
@@ -106,7 +98,7 @@ namespace Fitnes
 
         private void Window_Activated(object sender, EventArgs e)
         {
-          
+
         }
     }
 }

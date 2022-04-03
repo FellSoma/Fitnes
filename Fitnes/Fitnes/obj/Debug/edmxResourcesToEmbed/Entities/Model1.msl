@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище FitnessDBModelContainer" CdmEntityContainer="FitnessDBEntities">
+    <EntitySetMapping Name="FQAs">
+      <EntityTypeMapping TypeName="FitnessDBModel.FQA">
+        <MappingFragment StoreEntitySet="FQAs">
+          <ScalarProperty Name="id_FAQ" ColumnName="id_FAQ" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="Writer" ColumnName="Writer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Points">
+      <EntityTypeMapping TypeName="FitnessDBModel.Point">
+        <MappingFragment StoreEntitySet="Points">
+          <ScalarProperty Name="id_Point" ColumnName="id_Point" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FitnessDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id_User" ColumnName="id_User" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="id_FAQ" ColumnName="id_FAQ" />
+          <ScalarProperty Name="id_Point" ColumnName="id_Point" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -178,6 +178,13 @@
                     Margin="15"
                     Style="{StaticResource OrangeButton}"/>
 
+                <DataGrid x:Name="TestDataGrid" AutoGenerateColumns="False" ColumnWidth="*">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
+                        <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
             </StackPanel>
 
            
