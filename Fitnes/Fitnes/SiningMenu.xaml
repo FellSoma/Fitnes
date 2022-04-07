@@ -50,7 +50,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-      <!--Textboxes-->
+        <!--Textboxes-->
         <Style TargetType="TextBox"
             x:Key="Textboxes">
             <Setter Property="Margin" Value="0,10,0,30"/>
@@ -71,7 +71,7 @@
                             <Border x:Name="background" CornerRadius="10"
                                         Background="#353340"
                                         Width="{TemplateBinding Property=Width}"
-                                    Height="{TemplateBinding Property=Height}" />
+                                       Height="{TemplateBinding Property=Height}" />
 
                             <ScrollViewer x:Name="PART_ContentHost"                                         
                                           BorderThickness="1"
@@ -87,6 +87,42 @@
             </Setter>
         </Style>
 
+        <Style TargetType="TextBox"
+            x:Key="Textboxes2">
+            <Setter Property="Margin" Value="0,10,0,30"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#CFCFCF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+
+            <Setter Property="Foreground" Value="#CFCFCF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Grid x:Name="root" 
+                              Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="background" CornerRadius="10"
+                                    Background="#353340"
+                                    Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"                                         
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Margin="6,9,0,6"
+                                          FontSize="15"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
 
     </Window.Resources>
@@ -124,8 +160,8 @@
                             Grid.Row="1">
 
                 <StackPanel Orientation="Horizontal">
-                    
-                <TextBlock                  
+
+                    <TextBlock                  
                         Text="NightOrange"
                         Foreground="White"
                         FontSize="35"
@@ -137,7 +173,7 @@
                         Width="80"
                         Height="80"/>
 
-                </StackPanel> 
+                </StackPanel>
 
                 <TextBox                   
                     Height="40"
@@ -156,18 +192,43 @@
                     Style="{StaticResource PasswordBx}"
                     Name="passwordBx"
                     PasswordChanged="onPasswordChenged"/>
+
+                <StackPanel
+                    x:Name="spCapha"
+                    Visibility="Visible"
+                    Orientation="Horizontal">
+                    <Image 
+                        Source="Images/prabi.png"
+                        x:Name="CapchaImage"
+                        Margin="60,10,10,10" 
+                        Height="46" 
+                        Width="127"/>
+
+                    <TextBox                   
+                        Height="40"
+                        Foreground="#CFCFCF"
+                        Width="150"
+                        Margin="0,10,0,10"                  
+                        x:Name="Capcha"
+                        FontFamily="Fonts/#Lato"
+                        Style="{StaticResource Textboxes2}"/>
+
+                </StackPanel>
+
                 <TextBlock
                     Text=""
                     Margin="50,0,15,20"
                     FontSize="15"
-                    Height="72"
+                    x:Name="ErrorBlock"
+                    Height="52"
                     Foreground="#FFB21C1C"/>
 
                 <Button
                     Content="Войти"
                     Height="40"
                     Width="270"
-                    Click="entrance"
+                    x:Name="singButton"
+                    Click="test"
                     Style="{StaticResource OrangeButton}"/>
 
                 <Button
@@ -187,8 +248,6 @@
 
             </StackPanel>
 
-           
-            
             <TextBlock IsHitTestVisible="False"
                        Text="Пароль"
                        VerticalAlignment="Center"                                       
@@ -196,7 +255,7 @@
                        FontSize="15"
                        Foreground="DarkGray"
                        Name="WaterMark"                                       
-                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+                       HorizontalAlignment="Left" Grid.Row="1">
             </TextBlock>
 
             <TextBlock IsHitTestVisible="False"
@@ -205,7 +264,7 @@
                        Margin="93,120,0,385"  
                        FontSize="15"
                        Foreground="DarkGray"                                       
-                       HorizontalAlignment="Left" Grid.Row="1" RenderTransformOrigin="0.545,0.272">
+                       HorizontalAlignment="Left" Grid.Row="1">
 
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -224,5 +283,5 @@
 
 
     </Border>
-    
+
 </Window>

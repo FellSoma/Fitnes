@@ -29,6 +29,7 @@ namespace Fitnes
         }
         int trys = 0;
         string name;
+        bool check=false;
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             Window g = new SiningMenu();
@@ -46,7 +47,6 @@ namespace Fitnes
 
         }
 
-        bool check=false;
         private void onPasswordChenged(object sender, RoutedEventArgs e)
         {
             if (passwordBx.Password.Length > 0)

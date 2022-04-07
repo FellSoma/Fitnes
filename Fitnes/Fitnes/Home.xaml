@@ -80,26 +80,38 @@
                        FontSize="29"
                        FontWeight="Bold"
                        FontFamily="#Fonts/Lato"
-                       Margin="10,10,0,0"/>
+                       Margin="15,25,0,0"/>
             <StackPanel Grid.Row="1">
 
                 <RadioButton Content="Home"
                              Height="50"
-                             IsChecked="true"
+                             x:Name="rbHome" 
                              FontSize="14"
                              Margin="0,16,0,0"
                              Foreground="White"
                              
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}" Checked="homeChecked"/>
 
                 <RadioButton Content="Профиль"
-                             x:Name="Profile"
+                             x:Name="rbProfile"
+                             Height="50"
+                             FontSize="14"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}" Checked="profileChecked"/>
+
+                <RadioButton Content="FAQs"
                              Height="50"
                              FontSize="14"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"/>
-
-                <RadioButton Content="Main"
+                
+                <RadioButton Content="Пользователи"
+                             Height="50"
+                             FontSize="14"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                
+                <RadioButton Content="Залы"
                              Height="50"
                              FontSize="14"
                              Foreground="White"
@@ -108,18 +120,38 @@
             </StackPanel>
             <Image 
                         Source="Images/Logo.png"
-                        Width="80"
-                        Height="80"
+                        Width="70"
+                        Height="70"
                         Grid.Column="1" 
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"/>
-            <TextBox Width="250"
-                         Height="40"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Margin="5"
-                         Grid.Column="1"
-                         Style="{StaticResource ModernTextbox}"/>
+
+            <Grid Name="ToolBar"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  MouseDown="ToolBar_MouseDown"
+                  Background="Transparent">
+
+                <Button Content="X"
+                        Width="20"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="0,6,17,3"
+                        FontSize="20"
+                        FontFamily="Fonts/#Lato"
+                        Click="close"
+                        Style="{StaticResource CloseBt}"/>
+
+                <Button Content="__"
+                        Width="20"
+                        VerticalAlignment="Top"  
+                        HorizontalAlignment="Right"
+                        Margin="0,3,45,7"        
+                        FontSize="20"
+                        FontFamily="Fonts/#Lato"
+                        Click="windowState"
+                        Style="{StaticResource CloseBt}"/>
+            </Grid>
 
             <Border
                 Grid.Row="1"
@@ -127,29 +159,66 @@
                 Margin="15"
                 Background="#FF302D44"
                 CornerRadius="10">
-                
-            <TabControl 
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="5"
-                BorderThickness="0,0,0,0"
-                BorderBrush="#353340">
-
-                <TabItem x:Name="home" Header="Новости" >
+                <Grid>
                     
-                </TabItem>
+                   <TabControl 
+                       x:Name="home"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="5"
+                       BorderThickness="0,0,0,0"
+                       BorderBrush="#353340">
+                  
+                       <TabItem x:Name="news" Header="Новости" >
+                           
+                       </TabItem>
+                  
+                       <TabItem x:Name="faqs" Header="FAQs">
+                           <TabItem.Content>
+                               <StackPanel Margin="10" Orientation="Vertical">
+                                       <TextBlock Text="Здесь будут вопросы и ответы только подожди"/>
+                  
+                  
+                                   </StackPanel>
+                           </TabItem.Content>
+                       </TabItem>
+                  
+                           <TabItem x:Name="Point" Header="Залы" >
+                  
+                           </TabItem>
+                       
+                       </TabControl>
 
-                <TabItem x:Name="profile" Header="FAQs">
-                    <TabItem.Content>
-                        <StackPanel Margin="10" Orientation="Vertical">
-                                <TextBlock Text="Здесь будут вопросы и ответы только подожди"/>
+                    <TabControl 
+                        x:Name="profile"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="5"
+                        Visibility="Collapsed"
+                       BorderThickness="0,0,0,0"
+                       BorderBrush="#353340">
+
+                        <TabItem x:Name="userProfile" Header="Профиль" >
+
+                        </TabItem>
+
+                        <TabItem x:Name="Video" Header="Видео">
+                            <TabItem.Content>
+                                <StackPanel Margin="10" Orientation="Vertical">
+                                    <TextBlock Text="Здесь будут Твои видео только подожди"/>
 
 
-                            </StackPanel>
-                    </TabItem.Content>
-                </TabItem>
-            </TabControl>
-                
+                                </StackPanel>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem x:Name="settingsProfile" Header="Настройкм" >
+
+                        </TabItem>
+
+                    </TabControl>
+
+                </Grid>
             </Border>
 
         </Grid>
