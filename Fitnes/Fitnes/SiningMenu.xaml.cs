@@ -62,7 +62,7 @@ namespace Fitnes
         private void emptyMethod(object sender, DependencyPropertyChangedEventArgs e)
         {
         }
-
+        string role;
         private void entrance()
         {
             Entities.User authUser = null;
@@ -72,8 +72,9 @@ namespace Fitnes
             }
             if (authUser != null)
             {
-                Window g = new Home();
-                g.Show();
+                role = authUser.Role;
+                Home home = new Home(ref role);
+                home.Show();
             }
             else
             {

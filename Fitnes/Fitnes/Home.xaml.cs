@@ -11,10 +11,29 @@ namespace Fitnes
     public partial class Home : Window
     {
        
-        public Home()
+        public Home(ref string role)
         {
             InitializeComponent();
-        
+
+            switch (role)
+            {
+                case "Администратор       ":
+                    {
+                        MessageBox.Show("Привет владелец");
+                    }
+                    break;
+                case "Тренер":
+                    {
+                      
+                    }
+                    break;
+                case "Пользователь":
+                    {
+                        MessageBox.Show("Привет Раб");
+
+                    }
+                    break;
+            }
         }
 
         private void ToolBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
