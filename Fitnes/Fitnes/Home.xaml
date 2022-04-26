@@ -90,22 +90,28 @@
                              Margin="0,16,0,0"
                              Foreground="White"
                              
-                             Style="{StaticResource MenuButtonTheme}" Checked="homeChecked"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Checked="homeChecked"/>
 
                 <RadioButton Content="Профиль"
                              x:Name="rbProfile"
                              Height="50"
                              FontSize="14"
                              Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}" Checked="profileChecked"/>
+                             Style="{StaticResource MenuButtonTheme}" 
+                             Checked="profileChecked"/>
 
                 <RadioButton Content="FAQs"
                              Height="50"
+                             x:Name="rbFaqs"
                              FontSize="14"
                              Foreground="White"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Checked="faqsChecked"/>
                 
                 <RadioButton Content="Пользователи"
+                             Checked="usersChecked"
+                             x:Name="rbUsers"
                              Height="50"
                              FontSize="14"
                              Foreground="White"
@@ -113,6 +119,8 @@
                 
                 <RadioButton Content="Залы"
                              Height="50"
+                             x:Name="rbPoints"
+                             Checked="pointsChecked"
                              FontSize="14"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"/>
@@ -214,6 +222,81 @@
 
                         <TabItem x:Name="settingsProfile" Header="Настройкм" >
 
+                        </TabItem>
+
+                    </TabControl>
+                    
+                    <TabControl 
+                       x:Name="faqsTabcontrol"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="5"
+                        Visibility="Collapsed"
+                       BorderThickness="0,0,0,0"
+                       BorderBrush="#353340">
+
+                        <TabItem x:Name="faqsAdd" Header="Добавление" >
+
+                        </TabItem>
+
+                        <TabItem x:Name="faqsEdit" Header="Реактирование">
+                            <TabItem.Content>
+                                <StackPanel Margin="10" Orientation="Vertical">
+                                    <TextBlock Text="Здесь будут Твои вопросы тренер, только подожди"/>
+
+
+                                </StackPanel>
+                            </TabItem.Content>
+                        </TabItem>
+
+                    </TabControl>
+
+                    <TabControl 
+                       x:Name="usersTabControl"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="5"
+                        Visibility="Collapsed"
+                       BorderThickness="0,0,0,0"
+                       BorderBrush="#353340">
+
+                        <TabItem x:Name="usersAdd" Header="Добавление" >
+
+                        </TabItem>
+
+                        <TabItem x:Name="usersEdit" Header="Реактирование">
+                            <TabItem.Content>
+                                <StackPanel Margin="10" Orientation="Vertical">
+                                    <TextBlock Text="Здесь будут пользователи, только подожди"/>
+
+
+                                </StackPanel>
+                            </TabItem.Content>
+                        </TabItem>
+
+                    </TabControl>
+                    
+                    <TabControl 
+                       x:Name="pointTabControl"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="5"
+                        Visibility="Collapsed"
+                       BorderThickness="0,0,0,0"
+                       BorderBrush="#353340">
+
+                        <TabItem x:Name="pointAdd" Header="Добавление" >
+
+                        </TabItem>
+
+                        <TabItem x:Name="poinitEdit" Header="Реактирование">
+                            <TabItem.Content>
+                                <StackPanel Margin="10" Orientation="Vertical">
+                                    <TextBlock Text="Здесь будут точки или залы, только подожди"/>
+
+
+                                </StackPanel>
+                            </TabItem.Content>
                         </TabItem>
 
                     </TabControl>

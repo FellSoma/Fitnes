@@ -72,7 +72,6 @@ namespace Fitnes
             }
             if (authUser != null)
             {
-
                 Window g = new Home();
                 g.Show();
             }

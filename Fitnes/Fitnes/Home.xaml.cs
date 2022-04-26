@@ -41,6 +41,10 @@ namespace Fitnes
             {
                 home.Visibility = Visibility.Visible;
                 profile.Visibility = Visibility.Collapsed;
+                faqsTabcontrol.Visibility = Visibility.Collapsed;
+                usersTabControl.Visibility = Visibility.Collapsed;
+                pointTabControl.Visibility= Visibility.Collapsed;
+
             }
         }
 
@@ -50,8 +54,51 @@ namespace Fitnes
             {
                 profile.Visibility = Visibility.Visible;
                 home.Visibility = Visibility.Collapsed;
+                usersTabControl.Visibility = Visibility.Collapsed;
+                pointTabControl.Visibility= Visibility.Collapsed;
+                faqsTabcontrol.Visibility = Visibility.Collapsed;
+
             }
-           
+
+        }
+
+        private void faqsChecked(object sender, RoutedEventArgs e)
+        {
+            if (rbFaqs.IsChecked == true)
+            {
+                profile.Visibility = Visibility.Collapsed;
+                usersTabControl.Visibility = Visibility.Collapsed;
+                home.Visibility = Visibility.Collapsed;
+                pointTabControl.Visibility= Visibility.Collapsed;
+                faqsTabcontrol.Visibility = Visibility.Visible;
+
+            }
+        }
+
+        private void usersChecked(object sender, RoutedEventArgs e)
+        {
+            if (rbUsers.IsChecked == true)
+            {
+                profile.Visibility = Visibility.Collapsed;
+                home.Visibility = Visibility.Collapsed;
+                usersTabControl.Visibility = Visibility.Visible;
+                pointTabControl.Visibility = Visibility.Collapsed;
+                faqsTabcontrol.Visibility = Visibility.Collapsed;
+
+            }
+        }
+
+        private void pointsChecked(object sender, RoutedEventArgs e)
+        {
+            if (rbPoints.IsChecked == true)
+            {
+                profile.Visibility = Visibility.Collapsed;
+                home.Visibility = Visibility.Collapsed;
+                usersTabControl.Visibility = Visibility.Collapsed;
+                pointTabControl.Visibility = Visibility.Visible;
+                faqsTabcontrol.Visibility = Visibility.Collapsed;
+
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="id_FAQ" />
     </Key>
-    <Property Name="id_FAQ" Type="int" Nullable="false" />
+    <Property Name="id_FAQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="About" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Writer" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -13,7 +13,7 @@
     <Key>
       <PropertyRef Name="id_Point" />
     </Key>
-    <Property Name="id_Point" Type="int" Nullable="false" />
+    <Property Name="id_Point" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
@@ -21,7 +21,7 @@
     <Key>
       <PropertyRef Name="id_User" />
     </Key>
-    <Property Name="id_User" Type="int" Nullable="false" />
+    <Property Name="id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />

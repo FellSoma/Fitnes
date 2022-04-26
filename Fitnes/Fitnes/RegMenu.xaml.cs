@@ -97,16 +97,41 @@ namespace Fitnes
             Window g = new RegMenu();
             g.Show();
         }
-
+        private User _currentUser = new User();
         public void regisry()
         {
             if(Email.Text !="" && Login.Text != "" && passwordBx.Password.Length != 0 && passwordBx2.Password.Length != 0)
             {
                 if(check==true && level >0)
                 {
-                    User user = new User(Login.Text ,Email.Text,passwordBx.Password);
-                    db.Users.Add(user);
-                    db.SaveChanges();
+                    Entities.User user = new Entities.User()
+                    {
+                        Email = Email.Text,
+                        Login = Login.Text,
+                        Password = passwordBx.Password,
+                        Role = "Пользователь"
+                    };
+                    Entities.User authUser = null;
+                    using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                    {
+                        authUser = context.Users.Where(b => b.Login == Login.Text || b.Email == Email.Text).FirstOrDefault();
+                        if (authUser != null)
+                        {
+                            ErrorBlock.Text = "Такой пользователь уже существует";
+                            return;
+                        }
+                            context.Users.Add(user);
+                        try
+                        {
+                             context.SaveChanges();
+                             ErrorBlock.Text="Пользователь создан";
+                        }
+                        catch (Exception ex)
+                        {
+                            ErrorBlock.Text=ex.Message.ToString();
+                        }
+                        // Пользователь создан 
+                    }
                 }
                 else
                 emailCheck();
@@ -228,7 +253,6 @@ namespace Fitnes
                         passwordRate.Text = "Средний паролль";
                         ErrorBlock.Foreground = Brushes.Green;
                         passwordRate.Foreground = Brushes.Orange;
-                        ErrorBlock.Text = "Регестрация успешна";
                         regisry();
                     }
                     break;
@@ -237,7 +261,6 @@ namespace Fitnes
                         passwordRate.Text = "Хороший паролль";
                         passwordRate.Foreground = Brushes.Green;
                         ErrorBlock.Foreground = Brushes.Green;
-                        ErrorBlock.Text = "Регестрация успешна";
                         regisry();
                     }
                     break;
