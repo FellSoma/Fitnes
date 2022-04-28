@@ -190,7 +190,19 @@ namespace Fitnes
 
         private void editUser(object sender, RoutedEventArgs e)
         {
-            usersAdd.IsEnabled = true;
+            editUsers.Visibility = Visibility.Visible;
+            usersTabControl.SelectedIndex = 2;
+        }
+
+        private void editProfile(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void cancel(object sender, RoutedEventArgs e)
+        {
+            usersTabControl.SelectedIndex = 1;
+            editUsers.Visibility = Visibility.Collapsed;
         }
     }
 }

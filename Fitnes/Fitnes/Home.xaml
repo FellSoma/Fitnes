@@ -500,7 +500,7 @@
                                                 HorizontalAlignment="Right"
                                                 Margin="0,0,20,0"
                                                 Style="{StaticResource OrangeButton}"/>
-                                            
+
                                             <Button
                                                 Click="restock"
                                                 Content="Обновить"
@@ -514,6 +514,186 @@
                                     </StackPanel>
                                 </Grid>
                             </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem x:Name="editUsers" Header="Изменение" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="46*"/>
+                                    <RowDefinition Height="46*"/>
+                                    <RowDefinition Height="87*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox   
+                                    Grid.Row="1"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="nameEditProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="2"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="emailEditProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="3"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="loginEditProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="4"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="passEditProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <ComboBox
+                                    
+                                    Grid.Row="5"
+                                    Height="30"
+                                    Background="#FF302D44"
+                                    Foreground="#FF302D44"
+                                    BorderBrush="#FF302D44"
+                                    VerticalContentAlignment="Center"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="roleEditProfile" Margin="240,9,240,10">
+                                    <ComboBoxItem Content="Пользователь"/>
+                                    <ComboBoxItem Content="Тренер"/>
+                                    <ComboBoxItem Content="Администратор       "/>
+                                </ComboBox>
+
+                                <Button
+                                    Content="Изменить"
+                                    Grid.Row="6"
+                                    Style="{StaticResource OrangeButton}"
+                                    Width="200"
+                                    Height="30"
+                                    Click="editProfile"
+                                    VerticalAlignment="Center" />
+
+                                <Button
+                                    Content="Отменить"
+                                    Grid.Row="7"
+                                    Style="{StaticResource OrangeButton}"
+                                    Width="200"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Click="cancel"/>
+
+                                <TextBlock
+                                    x:Name="errorBlock2"
+                                    Grid.Row="8"
+                                    Height="60"
+                                    Width="350"
+                                    Foreground="Red"
+                                    Margin="165,3,165,4"/>
+
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Имя"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="1"
+                                    FontSize="15"
+                                    Margin="248,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=nameEditProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Email"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="2"
+                                    FontSize="15"
+                                    Margin="248,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=emailEditProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Логин"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="3"
+                                    FontSize="15"
+                                    Margin="249,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=loginEditProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Пароль"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="4"
+                                    FontSize="15"
+                                    Margin="249,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=passEditProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                            </Grid>
                         </TabItem>
 
                     </TabControl>
@@ -540,6 +720,7 @@
                                 </StackPanel>
                             </TabItem.Content>
                         </TabItem>
+
 
                     </TabControl>
 
