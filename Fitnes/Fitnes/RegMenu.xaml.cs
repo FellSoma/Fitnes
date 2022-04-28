@@ -120,9 +120,9 @@ namespace Fitnes
                             ErrorBlock.Text = "Такой пользователь уже существует";
                             return;
                         }
-                            context.Users.Add(user);
                         try
                         {
+                             context.Users.Add(user);
                              context.SaveChanges();
                              ErrorBlock.Text="Пользователь создан";
                         }

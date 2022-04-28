@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Fitnes
@@ -10,27 +13,29 @@ namespace Fitnes
     /// </summary>
     public partial class Home : Window
     {
-       
-        public Home(ref string role)
+
+        public Home(ref Entities.User authUser)
         {
             InitializeComponent();
 
-            switch (role)
+            switch (authUser.Role)
             {
                 case "Администратор       ":
                     {
-                        MessageBox.Show("Привет владелец");
+                        DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
                     }
                     break;
                 case "Тренер":
                     {
-                      
+                        rbUsers.Visibility = Visibility.Collapsed;
+                        rbPoints.Visibility = Visibility.Collapsed;
                     }
                     break;
                 case "Пользователь":
                     {
-                        MessageBox.Show("Привет Раб");
-
+                        rbUsers.Visibility = Visibility.Collapsed;
+                        rbPoints.Visibility = Visibility.Collapsed;
+                        rbFaqs.Visibility = Visibility.Collapsed;
                     }
                     break;
             }
@@ -56,13 +61,13 @@ namespace Fitnes
 
         private void homeChecked(object sender, RoutedEventArgs e)
         {
-            if(rbHome.IsChecked == true)
+            if (rbHome.IsChecked == true)
             {
                 home.Visibility = Visibility.Visible;
                 profile.Visibility = Visibility.Collapsed;
                 faqsTabcontrol.Visibility = Visibility.Collapsed;
                 usersTabControl.Visibility = Visibility.Collapsed;
-                pointTabControl.Visibility= Visibility.Collapsed;
+                pointTabControl.Visibility = Visibility.Collapsed;
 
             }
         }
@@ -74,7 +79,7 @@ namespace Fitnes
                 profile.Visibility = Visibility.Visible;
                 home.Visibility = Visibility.Collapsed;
                 usersTabControl.Visibility = Visibility.Collapsed;
-                pointTabControl.Visibility= Visibility.Collapsed;
+                pointTabControl.Visibility = Visibility.Collapsed;
                 faqsTabcontrol.Visibility = Visibility.Collapsed;
 
             }
@@ -88,7 +93,7 @@ namespace Fitnes
                 profile.Visibility = Visibility.Collapsed;
                 usersTabControl.Visibility = Visibility.Collapsed;
                 home.Visibility = Visibility.Collapsed;
-                pointTabControl.Visibility= Visibility.Collapsed;
+                pointTabControl.Visibility = Visibility.Collapsed;
                 faqsTabcontrol.Visibility = Visibility.Visible;
 
             }
@@ -118,6 +123,74 @@ namespace Fitnes
                 faqsTabcontrol.Visibility = Visibility.Collapsed;
 
             }
+        }
+
+        private void addNewProfile(object sender, RoutedEventArgs e)
+        {
+            StringBuilder errors = new StringBuilder();
+
+            if (loginNewProfile.Text == "" || passNewProfile.Text == "" || roleNewProfile.Text == "")
+            {
+                errorBlock.Text = "Не заполнены Логин, Пароль, Роль";
+            }
+            else
+            {
+                    Entities.User user = new Entities.User()
+                    {
+                        Name = nameNewProfile.Text,
+                        Email = emailNewProfile.Text,
+                        Login = loginNewProfile.Text,
+                        Password = passNewProfile.Text,
+                        Role = roleNewProfile.Text
+                    };
+                Entities.User authUser1 = null;
+                using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                {
+                    authUser1 = context.Users.Where(b => b.Login == loginNewProfile.Text || b.Email == emailNewProfile.Text).FirstOrDefault();
+                    if (authUser1 != null)
+                    {
+                        errorBlock.Foreground = Brushes.Red;
+                        errorBlock.Text = "Такой пользователь уже существует";
+                        return;
+                    }
+
+                    try
+                    {
+                        context.Users.Add(user);
+                        context.SaveChanges();
+                        errorBlock.Foreground = Brushes.Green;
+                        errorBlock.Text = "Пользователь создан";
+                    }
+                    catch (Exception ex)
+                    {
+                        errorBlock.Text = ex.Message.ToString();
+                    }
+                }
+            }
+        }
+
+        private void restock(object sender, RoutedEventArgs e)
+        {
+            DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
+        }
+
+        private void deleteUser(object sender, RoutedEventArgs e)
+        {
+            var rowselected =DataGridUsers.SelectedItem as Entities.User;
+
+            if(rowselected == null)
+            {
+                MessageBox.Show("Не выбрана ни одна строка для удаления!");
+                return;
+            }
+            App.DataBase.Users.Remove(rowselected);
+            App.DataBase.SaveChanges();
+            DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
+        }
+
+        private void editUser(object sender, RoutedEventArgs e)
+        {
+            usersAdd.IsEnabled = true;
         }
     }
 }

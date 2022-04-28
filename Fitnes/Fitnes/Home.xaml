@@ -20,8 +20,40 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Background" Value="#FF302D44"/>
             <Setter Property="BorderThickness" Value="0"/>
-            
+        </Style>
 
+        <Style TargetType="TextBox"
+            x:Key="Textboxes">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#CFCFCF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#CFCFCF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Grid x:Name="root" 
+                              Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="background" CornerRadius="10"
+                                    Background="#353340"
+                                    Width="{TemplateBinding Property=Width}"
+                                    Height="{TemplateBinding Property=Height}" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"                                         
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Margin="6,9,0,6"
+                                          FontSize="15"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="TabItem">
@@ -108,7 +140,7 @@
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              Checked="faqsChecked"/>
-                
+
                 <RadioButton Content="Пользователи"
                              Checked="usersChecked"
                              x:Name="rbUsers"
@@ -116,7 +148,7 @@
                              FontSize="14"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"/>
-                
+
                 <RadioButton Content="Залы"
                              Height="50"
                              x:Name="rbPoints"
@@ -168,34 +200,34 @@
                 Background="#FF302D44"
                 CornerRadius="10">
                 <Grid>
-                    
-                   <TabControl 
+
+                    <TabControl 
                        x:Name="home"
                        Grid.Row="1"
                        Grid.Column="1"
                        Margin="5"
                        BorderThickness="0,0,0,0"
                        BorderBrush="#353340">
-                  
-                       <TabItem x:Name="news" Header="Новости" >
-                           
-                       </TabItem>
-                  
-                       <TabItem x:Name="faqs" Header="FAQs">
-                           <TabItem.Content>
-                               <StackPanel Margin="10" Orientation="Vertical">
-                                       <TextBlock Text="Здесь будут вопросы и ответы только подожди"/>
-                  
-                  
-                                   </StackPanel>
-                           </TabItem.Content>
-                       </TabItem>
-                  
-                           <TabItem x:Name="Point" Header="Залы" >
-                  
-                           </TabItem>
-                       
-                       </TabControl>
+
+                        <TabItem x:Name="news" Header="Новости" >
+
+                        </TabItem>
+
+                        <TabItem x:Name="faqs" Header="FAQs">
+                            <TabItem.Content>
+                                <StackPanel Margin="10" Orientation="Vertical">
+                                    <TextBlock Text="Здесь будут вопросы и ответы только подожди"/>
+
+
+                                </StackPanel>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem x:Name="Point" Header="Залы" >
+
+                        </TabItem>
+
+                    </TabControl>
 
                     <TabControl 
                         x:Name="profile"
@@ -225,7 +257,7 @@
                         </TabItem>
 
                     </TabControl>
-                    
+
                     <TabControl 
                        x:Name="faqsTabcontrol"
                        Grid.Row="1"
@@ -256,26 +288,236 @@
                        Grid.Row="1"
                        Grid.Column="1"
                        Margin="5"
-                        Visibility="Collapsed"
+                       Visibility="Visible"
                        BorderThickness="0,0,0,0"
                        BorderBrush="#353340">
 
                         <TabItem x:Name="usersAdd" Header="Добавление" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="45*"/>
+                                    <RowDefinition Height="118*"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBox   
+                                    Grid.Row="1"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="nameNewProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="2"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="emailNewProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="3"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="loginNewProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <TextBox   
+                                    Grid.Row="4"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="passNewProfile"
+                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+
+                                <ComboBox
+                                    
+                                    Grid.Row="5"
+                                    Height="30"
+                                    Background="#FF302D44"
+                                    Foreground="#FF302D44"
+                                    BorderBrush="#FF302D44"
+                                    VerticalContentAlignment="Center"
+                                    Width="200"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="roleNewProfile" Margin="240,9,240,10">
+                                    <ComboBoxItem Content="Пользователь"/>
+                                    <ComboBoxItem Content="Тренер"/>
+                                    <ComboBoxItem Content="Администратор       "/>
+                                </ComboBox>
+
+                                <Button
+                                    Content="Добавить"
+                                    Grid.Row="5"
+                                    Style="{StaticResource OrangeButton}"
+                                    Width="200"
+                                    Height="30"
+                                    Click="addNewProfile"
+                                    VerticalAlignment="Top" Margin="240,49,240,0" Grid.RowSpan="2"/>
+
+                                <TextBlock
+                                    x:Name="errorBlock"
+                                    Grid.Row="7"
+                                    Height="100"
+                                    Width="350"
+                                    Foreground="Red"/>
+
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Имя"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="1"
+                                    FontSize="15"
+                                    Margin="248,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=nameNewProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Email"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="2"
+                                    FontSize="15"
+                                    Margin="248,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=emailNewProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Логин"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="3"
+                                    FontSize="15"
+                                    Margin="249,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=loginNewProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Пароль"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="4"
+                                    FontSize="15"
+                                    Margin="249,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=passNewProfile}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                            </Grid>
                         </TabItem>
 
                         <TabItem x:Name="usersEdit" Header="Реактирование">
                             <TabItem.Content>
-                                <StackPanel Margin="10" Orientation="Vertical">
-                                    <TextBlock Text="Здесь будут пользователи, только подожди"/>
+                                <Grid >
+                                    <StackPanel Orientation="Vertical">
+                                        <DataGrid x:Name="DataGridUsers" 
+                                                  AutoGenerateColumns="False" 
+                                                  ColumnWidth="*" 
+                                                  Margin="20,20,20,10"
+                                                  Height="380"
+                                                  BorderBrush="#FF363449"
+                                                  Foreground="#FF363449">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Имя" Binding="{Binding Name}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="EmaiL" Binding="{Binding Email}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Логин" Binding="{Binding Login}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Пароль" Binding="{Binding Password}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Роль" Binding="{Binding Role}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                                Click="editUser"
+                                                Content="Изменить"
+                                                Width="120"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="20,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
 
-
-                                </StackPanel>
+                                            <Button
+                                                Content="Удалить"
+                                                Width="110"
+                                                Click="deleteUser"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
+                                            
+                                            <Button
+                                                Click="restock"
+                                                Content="Обновить"
+                                                Width="120"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
                             </TabItem.Content>
                         </TabItem>
 
                     </TabControl>
-                    
+
                     <TabControl 
                        x:Name="pointTabControl"
                        Grid.Row="1"

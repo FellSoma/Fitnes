@@ -73,7 +73,7 @@ namespace Fitnes
             if (authUser != null)
             {
                 role = authUser.Role;
-                Home home = new Home(ref role);
+                Home home = new Home(ref authUser);
                 home.Show();
             }
             else
