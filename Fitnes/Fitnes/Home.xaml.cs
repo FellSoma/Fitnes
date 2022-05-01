@@ -191,7 +191,7 @@ namespace Fitnes
                 errorBlock.Text = ex.Message.ToString();
             }
         }
-       
+
         private void editUser(object sender, RoutedEventArgs e)
         {
             editUsers.Visibility = Visibility.Visible;
@@ -218,24 +218,40 @@ namespace Fitnes
             }
             else
             {
-               
-                    try
-                    {
-                        (from p in App.DataBase.Users
-                         where p.id_User == currenttrow.id_User
-                         select p).ToList().ForEach(x => x.Name = nameEditProfile.Text);
-                        
-                       
-                        App.DataBase.SaveChanges();
-                        errorBlock2.Foreground = Brushes.Green;
-                        errorBlock2.Text = "Пользователь изменён";
-                    }
-                    catch (Exception ex)
-                    {
-                        errorBlock2.Foreground = Brushes.Red;
-                        errorBlock2.Text = ex.Message.ToString();
-                    }
-                
+
+                try
+                {
+                    (from p in App.DataBase.Users
+                     where p.id_User == currenttrow.id_User
+                     select p).ToList().ForEach(x => x.Name = nameEditProfile.Text);
+
+                    (from p in App.DataBase.Users
+                     where p.id_User == currenttrow.id_User
+                     select p).ToList().ForEach(x => x.Email = emailEditProfile.Text);
+
+                    (from p in App.DataBase.Users
+                     where p.id_User == currenttrow.id_User
+                     select p).ToList().ForEach(x => x.Login = loginEditProfile.Text);
+
+                    (from p in App.DataBase.Users
+                     where p.id_User == currenttrow.id_User
+                     select p).ToList().ForEach(x => x.Password = passEditProfile.Text);
+
+                    (from p in App.DataBase.Users
+                     where p.id_User == currenttrow.id_User
+                     select p).ToList().ForEach(x => x.Role = roleEditProfile.Text);
+
+
+                    App.DataBase.SaveChanges();
+                    errorBlock2.Foreground = Brushes.Green;
+                    errorBlock2.Text = "Пользователь изменён";
+                }
+                catch (Exception ex)
+                {
+                    errorBlock2.Foreground = Brushes.Red;
+                    errorBlock2.Text = ex.Message.ToString();
+                }
+
             }
         }
 
