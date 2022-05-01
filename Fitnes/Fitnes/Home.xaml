@@ -294,6 +294,10 @@
 
                         <TabItem x:Name="usersAdd" Header="Добавление" >
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="473*"/>
+                                    <ColumnDefinition Width="207*"/>
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="49*"/>
                                     <RowDefinition Height="49*"/>
@@ -312,7 +316,7 @@
                                     Width="200"
                                     FontFamily="Fonts/#Lato"
                                     Name="nameNewProfile"
-                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+                                    Style="{StaticResource Textboxes}" Margin="240,0,33,0"/>
 
                                 <TextBox   
                                     Grid.Row="2"
@@ -321,7 +325,7 @@
                                     Width="200"
                                     FontFamily="Fonts/#Lato"
                                     Name="emailNewProfile"
-                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+                                    Style="{StaticResource Textboxes}" Margin="240,0,33,0"/>
 
                                 <TextBox   
                                     Grid.Row="3"
@@ -330,7 +334,7 @@
                                     Width="200"
                                     FontFamily="Fonts/#Lato"
                                     Name="loginNewProfile"
-                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+                                    Style="{StaticResource Textboxes}" Margin="240,0,33,0"/>
 
                                 <TextBox   
                                     Grid.Row="4"
@@ -339,7 +343,7 @@
                                     Width="200"
                                     FontFamily="Fonts/#Lato"
                                     Name="passNewProfile"
-                                    Style="{StaticResource Textboxes}" Margin="240,0,240,0"/>
+                                    Style="{StaticResource Textboxes}" Margin="240,0,33,0"/>
 
                                 <ComboBox
                                     
@@ -351,7 +355,7 @@
                                     VerticalContentAlignment="Center"
                                     Width="200"
                                     FontFamily="Fonts/#Lato"
-                                    Name="roleNewProfile" Margin="240,9,240,10">
+                                    Name="roleNewProfile" Margin="240,9,33,10">
                                     <ComboBoxItem Content="Пользователь"/>
                                     <ComboBoxItem Content="Тренер"/>
                                     <ComboBoxItem Content="Администратор       "/>
@@ -364,14 +368,14 @@
                                     Width="200"
                                     Height="30"
                                     Click="addNewProfile"
-                                    VerticalAlignment="Top" Margin="240,49,240,0" Grid.RowSpan="2"/>
+                                    VerticalAlignment="Top" Margin="240,49,33,0" Grid.RowSpan="2"/>
 
                                 <TextBlock
                                     x:Name="errorBlock"
                                     Grid.Row="7"
                                     Height="100"
                                     Width="350"
-                                    Foreground="Red"/>
+                                    Foreground="Red" Grid.ColumnSpan="2" Margin="165,9,165,9"/>
 
                                 <TextBlock 
                                     IsHitTestVisible="False"

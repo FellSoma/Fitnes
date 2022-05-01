@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace Fitnes
 {
@@ -127,7 +125,6 @@ namespace Fitnes
 
         private void addNewProfile(object sender, RoutedEventArgs e)
         {
-            StringBuilder errors = new StringBuilder();
 
             if (loginNewProfile.Text == "" || passNewProfile.Text == "" || roleNewProfile.Text == "")
             {
@@ -135,14 +132,14 @@ namespace Fitnes
             }
             else
             {
-                    Entities.User user = new Entities.User()
-                    {
-                        Name = nameNewProfile.Text,
-                        Email = emailNewProfile.Text,
-                        Login = loginNewProfile.Text,
-                        Password = passNewProfile.Text,
-                        Role = roleNewProfile.Text
-                    };
+                Entities.User user = new Entities.User()
+                {
+                    Name = nameNewProfile.Text,
+                    Email = emailNewProfile.Text,
+                    Login = loginNewProfile.Text,
+                    Password = passNewProfile.Text,
+                    Role = roleNewProfile.Text
+                };
                 Entities.User authUser1 = null;
                 using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
                 {
@@ -176,27 +173,70 @@ namespace Fitnes
 
         private void deleteUser(object sender, RoutedEventArgs e)
         {
-            var rowselected =DataGridUsers.SelectedItem as Entities.User;
+            var rowselected = DataGridUsers.SelectedItem as Entities.User;
 
-            if(rowselected == null)
+            if (rowselected == null)
             {
                 MessageBox.Show("Не выбрана ни одна строка для удаления!");
                 return;
             }
-            App.DataBase.Users.Remove(rowselected);
-            App.DataBase.SaveChanges();
-            DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
+            try
+            {
+                App.DataBase.Users.Remove(rowselected);
+                App.DataBase.SaveChanges();
+                DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
+            }
+            catch (Exception ex)
+            {
+                errorBlock.Text = ex.Message.ToString();
+            }
         }
-
+       
         private void editUser(object sender, RoutedEventArgs e)
         {
             editUsers.Visibility = Visibility.Visible;
             usersTabControl.SelectedIndex = 2;
+            var currenttrow = DataGridUsers.SelectedItem as Entities.User;
+            if (currenttrow == null)
+            {
+                MessageBox.Show("Не выбрана ни одна строка для редактирования!");
+                return;
+            }
+            nameEditProfile.Text = currenttrow.Name;
+            emailEditProfile.Text = currenttrow.Email;
+            loginEditProfile.Text = currenttrow.Login;
+            passEditProfile.Text = currenttrow.Password;
+            roleEditProfile.Text = currenttrow.Role;
         }
 
         private void editProfile(object sender, RoutedEventArgs e)
         {
-            
+            var currenttrow = DataGridUsers.SelectedItem as Entities.User;
+            if (loginEditProfile.Text == "" || passEditProfile.Text == "" || roleEditProfile.Text == "")
+            {
+                errorBlock2.Text = "Не заполнены Логин, Пароль, Роль";
+            }
+            else
+            {
+               
+                    try
+                    {
+                        (from p in App.DataBase.Users
+                         where p.id_User == currenttrow.id_User
+                         select p).ToList().ForEach(x => x.Name = nameEditProfile.Text);
+                        
+                       
+                        App.DataBase.SaveChanges();
+                        errorBlock2.Foreground = Brushes.Green;
+                        errorBlock2.Text = "Пользователь изменён";
+                    }
+                    catch (Exception ex)
+                    {
+                        errorBlock2.Foreground = Brushes.Red;
+                        errorBlock2.Text = ex.Message.ToString();
+                    }
+                
+            }
         }
 
         private void cancel(object sender, RoutedEventArgs e)
