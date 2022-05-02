@@ -11,11 +11,12 @@ namespace Fitnes
     /// </summary>
     public partial class Home : Window
     {
-
+        Entities.User nowUser; 
         public Home(ref Entities.User authUser)
         {
             InitializeComponent();
 
+            nowUser = authUser;
             switch (authUser.Role)
             {
                 case "Администратор       ":
@@ -88,6 +89,7 @@ namespace Fitnes
         {
             if (rbFaqs.IsChecked == true)
             {
+                userNewFAQs.ItemsSource = App.DataBase.Users.ToList();
                 profile.Visibility = Visibility.Collapsed;
                 usersTabControl.Visibility = Visibility.Collapsed;
                 home.Visibility = Visibility.Collapsed;
@@ -128,6 +130,7 @@ namespace Fitnes
 
             if (loginNewProfile.Text == "" || passNewProfile.Text == "" || roleNewProfile.Text == "")
             {
+                errorBlock.Foreground = Brushes.Red;
                 errorBlock.Text = "Не заполнены Логин, Пароль, Роль";
             }
             else
@@ -214,6 +217,7 @@ namespace Fitnes
             var currenttrow = DataGridUsers.SelectedItem as Entities.User;
             if (loginEditProfile.Text == "" || passEditProfile.Text == "" || roleEditProfile.Text == "")
             {
+                errorBlock2.Foreground = Brushes.Red;
                 errorBlock2.Text = "Не заполнены Логин, Пароль, Роль";
             }
             else
@@ -259,6 +263,62 @@ namespace Fitnes
         {
             usersTabControl.SelectedIndex = 1;
             editUsers.Visibility = Visibility.Collapsed;
+        }
+
+        private void addNewFAqs(object sender, RoutedEventArgs e)
+        {
+            if (nameNewFAQs.Text == "" || aboutNewFAQs.Text == "")
+            {
+                errorBlockFAQs.Foreground = Brushes.Red;
+                errorBlockFAQs.Text = "Не заполнены Название, Содержание, Автор";
+            }
+            else
+            {
+                Entities.FQA qA = new Entities.FQA()
+                {
+                    Name = nameNewFAQs.Text,
+                    About = aboutNewFAQs.Text,
+                    Writer = writerNewFAQs.Text
+                };
+                Entities.FQA authUser1 = null;
+                using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                {
+                    authUser1 = context.FQAs.Where(b => b.Name == nameNewFAQs.Text || b.About == aboutNewFAQs.Text).FirstOrDefault();
+                    if (authUser1 != null)
+                    {
+                        errorBlockFAQs.Foreground = Brushes.Red;
+                        errorBlockFAQs.Text = "Такой пользователь уже существует";
+                        return;
+                    }
+
+                    try
+                    {
+                        context.FQAs.Add(qA);
+                        context.SaveChanges();
+                        errorBlockFAQs.Foreground = Brushes.Green;
+                        errorBlockFAQs.Text = "Пользователь создан";
+                    }
+                    catch (Exception ex)
+                    {
+                        errorBlockFAQs.Text = ex.Message.ToString();
+                    }
+                }
+            }
+        }
+
+        private void deleteFAQs(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editFAQs(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void restockFAQs(object sender, RoutedEventArgs e)
+        {
+            DataGridUsers.ItemsSource = App.DataBase.FQAs.ToList();
         }
     }
 }

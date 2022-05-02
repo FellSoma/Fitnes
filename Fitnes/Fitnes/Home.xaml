@@ -263,21 +263,203 @@
                        Grid.Row="1"
                        Grid.Column="1"
                        Margin="5"
-                        Visibility="Collapsed"
+                        Visibility="Visible"
                        BorderThickness="0,0,0,0"
                        BorderBrush="#353340">
 
                         <TabItem x:Name="faqsAdd" Header="Добавление" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0*"/>
+                                    <RowDefinition Height="57*"/>
+                                    <RowDefinition Height="171*"/>
+                                    <RowDefinition Height="57*"/>
+                                    <RowDefinition Height="44*"/>
+                                    <RowDefinition Height="42*"/>
+                                    <RowDefinition Height="85*"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBox   
+                                    Grid.Row="1"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="nameNewFAQs"
+                                    Style="{StaticResource Textboxes}" Margin="210,0,210,0" />
+
+                                <TextBox   
+                                    Grid.Row="2"
+                                    Height="140"
+                                    Margin="210,0,210,0"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Visible"
+                                    Foreground="#CFCFCF"
+                                    FontFamily="Fonts/#Lato" 
+                                    Name="aboutNewFAQs"
+                                    Style="{StaticResource Textboxes}"  />
+
+                                <TextBox   
+                                    Grid.Row="3"
+                                    Height="40"
+                                    Foreground="#CFCFCF"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="writerNewFAQs"
+                                    Style="{StaticResource Textboxes}" Margin="210,0,210,0" />
+
+                                <Button
+                                    Content="Добавить"
+                                    Grid.Row="4"
+                                    Style="{StaticResource OrangeButton}"
+                                    Height="30"
+                                    Click="addNewFAqs"
+                                    VerticalAlignment="Center" Margin="240,0,240,0"/>
+
+                                <ComboBox
+                                    Grid.Row="5"
+                                    Height="30"
+                                    Background="#FF302D44"
+                                    Foreground="#FF302D44"
+                                    BorderBrush="#FF302D44"
+                                    VerticalContentAlignment="Center"
+                                    Width="220"
+                                    FontFamily="Fonts/#Lato"
+                                    Name="userNewFAQs"
+                                    ItemsSource="{Binding Users}"
+                                    DisplayMemberPath="Login"
+                                    SelectedValuePath="id_User"
+                                    SelectedValue="{Binding Path=id_User}">
+                                    
+                                </ComboBox>
+
+                                <TextBlock
+                                    x:Name="errorBlockFAQs"
+                                    Grid.Row="6"
+                                    Foreground="Red"
+                                    Width="300"
+                                    Height="70"/>
+
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Название"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="1"
+                                    FontSize="15"
+                                    Margin="217,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left" Height="20" Width="66">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=nameNewFAQs}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Содержание"
+                                    VerticalAlignment="Top"
+                                    Grid.Row="2"
+                                    FontSize="15"
+                                    Margin="216,26,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left" Height="20" Width="87">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=aboutNewFAQs}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock 
+                                    IsHitTestVisible="False"
+                                    Text="Автор"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="3"
+                                    FontSize="15"
+                                    Margin="217,0,0,0"
+                                    Foreground="DarkGray"                                       
+                                    HorizontalAlignment="Left" Height="20" Width="42">
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=writerNewFAQs}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                            </Grid>
                         </TabItem>
 
                         <TabItem x:Name="faqsEdit" Header="Реактирование">
                             <TabItem.Content>
-                                <StackPanel Margin="10" Orientation="Vertical">
-                                    <TextBlock Text="Здесь будут Твои вопросы тренер, только подожди"/>
+                                <Grid >
+                                    <StackPanel Orientation="Vertical">
+                                        <DataGrid x:Name="DataGridFAqs" 
+                                                  AutoGenerateColumns="False" 
+                                                  ColumnWidth="*" 
+                                                  Margin="20,20,20,10"
+                                                  Height="380"
+                                                  BorderBrush="#FF363449"
+                                                  Foreground="#FF363449">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Имя" Binding="{Binding Name}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="EmaiL" Binding="{Binding Email}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Логин" Binding="{Binding Login}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Пароль" Binding="{Binding Password}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Роль" Binding="{Binding Role}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                                Click="editFAQs"
+                                                Content="Изменить"
+                                                Width="120"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="20,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
 
+                                            <Button
+                                                Content="Удалить"
+                                                Width="110"
+                                                Click="deleteFAQs"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
 
-                                </StackPanel>
+                                            <Button
+                                                Click="restockFAQs"
+                                                Content="Обновить"
+                                                Width="120"
+                                                Height="25"
+                                                FontSize="17"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,20,0"
+                                                Style="{StaticResource OrangeButton}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
                             </TabItem.Content>
                         </TabItem>
 
@@ -288,7 +470,7 @@
                        Grid.Row="1"
                        Grid.Column="1"
                        Margin="5"
-                       Visibility="Visible"
+                       Visibility="Collapsed"
                        BorderThickness="0,0,0,0"
                        BorderBrush="#353340">
 
@@ -461,7 +643,6 @@
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>
-
                             </Grid>
                         </TabItem>
 
@@ -520,7 +701,7 @@
                             </TabItem.Content>
                         </TabItem>
 
-                        <TabItem x:Name="editUsers" Header="Изменение" >
+                        <TabItem x:Name="editUsers" Header="Изменение" Visibility="Collapsed" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="49*"/>
@@ -596,7 +777,7 @@
                                     VerticalAlignment="Center" />
 
                                 <Button
-                                    Content="Отменить"
+                                    Content="Назад"
                                     Grid.Row="7"
                                     Style="{StaticResource OrangeButton}"
                                     Width="200"
