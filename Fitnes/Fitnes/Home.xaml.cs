@@ -144,7 +144,7 @@ namespace Fitnes
                     Role = roleNewProfile.Text
                 };
                 Entities.User authUser1 = null;
-                using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
                 {
                     authUser1 = context.Users.Where(b => b.Login == loginNewProfile.Text || b.Email == emailNewProfile.Text).FirstOrDefault();
                     if (authUser1 != null)
@@ -278,10 +278,11 @@ namespace Fitnes
                 {
                     Name = nameNewFAQs.Text,
                     About = aboutNewFAQs.Text,
-                    Writer = writerNewFAQs.Text
+                    Writer = writerNewFAQs.Text,
+                    id_User = userNewFAQs.SelectedIndex+1
                 };
                 Entities.FQA authUser1 = null;
-                using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
                 {
                     authUser1 = context.FQAs.Where(b => b.Name == nameNewFAQs.Text || b.About == aboutNewFAQs.Text).FirstOrDefault();
                     if (authUser1 != null)
@@ -318,7 +319,7 @@ namespace Fitnes
 
         private void restockFAQs(object sender, RoutedEventArgs e)
         {
-            DataGridUsers.ItemsSource = App.DataBase.FQAs.ToList();
+            DataGridFAqs.ItemsSource = App.DataBase.FQAs.ToList();
         }
     }
 }

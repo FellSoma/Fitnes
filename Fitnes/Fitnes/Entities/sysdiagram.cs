@@ -12,14 +12,12 @@ namespace Fitnes.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class FQA
+    public partial class sysdiagram
     {
-        public int id_FAQ { get; set; }
-        public string Name { get; set; }
-        public string About { get; set; }
-        public string Writer { get; set; }
-        public Nullable<int> id_User { get; set; }
-    
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

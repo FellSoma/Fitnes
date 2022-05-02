@@ -112,7 +112,7 @@ namespace Fitnes
                         Role = "Пользователь"
                     };
                     Entities.User authUser = null;
-                    using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+                    using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
                     {
                         authUser = context.Users.Where(b => b.Login == Login.Text || b.Email == Email.Text).FirstOrDefault();
                         if (authUser != null)

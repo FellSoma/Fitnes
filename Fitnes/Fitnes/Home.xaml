@@ -420,11 +420,10 @@
                                                   BorderBrush="#FF363449"
                                                   Foreground="#FF363449">
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Foreground="#FF363449" Header="Имя" Binding="{Binding Name}"/>
-                                                <DataGridTextColumn Foreground="#FF363449" Header="EmaiL" Binding="{Binding Email}"/>
-                                                <DataGridTextColumn Foreground="#FF363449" Header="Логин" Binding="{Binding Login}"/>
-                                                <DataGridTextColumn Foreground="#FF363449" Header="Пароль" Binding="{Binding Password}"/>
-                                                <DataGridTextColumn Foreground="#FF363449" Header="Роль" Binding="{Binding Role}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Название" Binding="{Binding Name}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Содержание" Binding="{Binding About}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="Автор" Binding="{Binding Writer}"/>
+                                                <DataGridTextColumn Foreground="#FF363449" Header="id_User" Binding="{Binding id_User}"/>
                                             </DataGrid.Columns>
                                         </DataGrid>
                                         <StackPanel Orientation="Horizontal">

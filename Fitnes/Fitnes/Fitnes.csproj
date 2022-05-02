@@ -99,6 +99,9 @@
     <Compile Include="Entities\Point.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -213,12 +216,11 @@
   <ItemGroup>
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Entities\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Entities\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

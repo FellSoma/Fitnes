@@ -66,7 +66,7 @@ namespace Fitnes
         private void entrance()
         {
             Entities.User authUser = null;
-            using (Entities.FitnessDBEntities context = new Entities.FitnessDBEntities())
+            using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
             {
                 authUser = context.Users.Where(b => b.Login == Login.Text && b.Password == passwordBx.Password).FirstOrDefault();
             }

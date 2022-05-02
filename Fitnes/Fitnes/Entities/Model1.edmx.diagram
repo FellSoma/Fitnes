@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b8ef90ca3b584e5f8d0583e0fadc2f9f" Name="Diagram1">
-        <EntityTypeShape EntityType="FitnessDBModel.FQA" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FitnessDBModel.Point" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FitnessDBModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="FitnessDBModel.FK_Users_FQAs" ManuallyRouted="false" />
-        <AssociationConnector Association="FitnessDBModel.FK_Users_Points" ManuallyRouted="false" />
+      <Diagram DiagramId="282cfe4614a54b18b2f2c2c37d2a4faf" Name="Diagram1">
+        <EntityTypeShape EntityType="FitnessDBModel.FQA" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessDBModel.Point" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessDBModel.User" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="FitnessDBModel.FK_FQAs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessDBModel.FK_Points_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
