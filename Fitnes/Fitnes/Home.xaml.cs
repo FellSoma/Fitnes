@@ -309,12 +309,52 @@ namespace Fitnes
 
         private void deleteFAQs(object sender, RoutedEventArgs e)
         {
+            var rowselectedFAQs = DataGridFAqs.SelectedItem as Entities.FQA;
 
+            if (rowselectedFAQs == null)
+            {
+                MessageBox.Show("Не выбрана ни одна строка для удаления!");
+                return;
+            }
+            try
+            {
+                App.DataBase.FQAs.Remove(rowselectedFAQs);
+                App.DataBase.SaveChanges();
+                DataGridUsers.ItemsSource = App.DataBase.FQAs.ToList();
+            }
+            catch (Exception ex)
+            {
+                errorBlock.Text = ex.Message.ToString();
+            }
         }
 
         private void editFAQs(object sender, RoutedEventArgs e)
         {
+            TabItemeditFAQs.Visibility = Visibility.Visible;
+            faqsTabcontrol.SelectedIndex = 2;
+            var currenttrow = DataGridFAqs.SelectedItem as Entities.FQA;
+            if (currenttrow == null)
+            {
+                MessageBox.Show("Не выбрана ни одна строка для редактирования!");
+                return;
+            }
+            nameEditFAQs.Text = currenttrow.Name;
+            aboutEditFAQs.Text = currenttrow.About;
+            writerEditFAQs.Text = currenttrow.Writer;
+            Entities.User authUser1 = null;
+            using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
+            {
+                authUser1 = context.Users.Where(b => b.id_User == currenttrow.id_User).FirstOrDefault();
+                if (authUser1 != null)
+                {
+                    userEditFAQs.SelectedItem = authUser1.Login.ToString();
+                    userEditFAQs.SelectedItem = authUser1.Login.ToString();
+                    userEditFAQs.ItemsSource.OfType<object>().Where(userEditFAQs => userEditFAQs.Equals(authUser1.Login));
+                    
 
+                }
+                // Попробуй через using и context найти привязонного к id из DataGridFAQs в таблце пользовотеля и возьми имя, засунь его в хедер комбобокса может подойдёт Where или Find
+            }
         }
 
         private void restockFAQs(object sender, RoutedEventArgs e)
