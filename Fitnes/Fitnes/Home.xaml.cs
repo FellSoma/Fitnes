@@ -89,6 +89,7 @@ namespace Fitnes
         {
             if (rbFaqs.IsChecked == true)
             {
+                DataGridFAqs.ItemsSource = App.DataBase.FQAs.ToList();
                 userNewFAQs.ItemsSource = App.DataBase.Users.ToList();
                 profile.Visibility = Visibility.Collapsed;
                 usersTabControl.Visibility = Visibility.Collapsed;
@@ -330,6 +331,7 @@ namespace Fitnes
 
         private void editFAQs(object sender, RoutedEventArgs e)
         {
+            userEditFAQs.ItemsSource = App.DataBase.Users.ToList();
             TabItemeditFAQs.Visibility = Visibility.Visible;
             faqsTabcontrol.SelectedIndex = 2;
             var currenttrow = DataGridFAqs.SelectedItem as Entities.FQA;
@@ -341,25 +343,54 @@ namespace Fitnes
             nameEditFAQs.Text = currenttrow.Name;
             aboutEditFAQs.Text = currenttrow.About;
             writerEditFAQs.Text = currenttrow.Writer;
-            Entities.User authUser1 = null;
-            using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
-            {
-                authUser1 = context.Users.Where(b => b.id_User == currenttrow.id_User).FirstOrDefault();
-                if (authUser1 != null)
-                {
-                    userEditFAQs.SelectedItem = authUser1.Login.ToString();
-                    userEditFAQs.SelectedItem = authUser1.Login.ToString();
-                    userEditFAQs.ItemsSource.OfType<object>().Where(userEditFAQs => userEditFAQs.Equals(authUser1.Login));
-                    
-
-                }
-                // Попробуй через using и context найти привязонного к id из DataGridFAQs в таблце пользовотеля и возьми имя, засунь его в хедер комбобокса может подойдёт Where или Find
-            }
         }
 
         private void restockFAQs(object sender, RoutedEventArgs e)
         {
             DataGridFAqs.ItemsSource = App.DataBase.FQAs.ToList();
+        }
+
+        private void saveEditFAQs(object sender, RoutedEventArgs e)
+        {
+            var currenttrow = DataGridFAqs.SelectedItem as Entities.FQA;
+            if (nameEditFAQs.Text == "" || aboutEditFAQs.Text == "" || writerEditFAQs.Text == "" || userEditFAQs.SelectedItem==null)
+            {
+                errorBlockFAQs.Foreground = Brushes.Red;
+                errorBlockFAQs.Text = "Не все поля заполнены";
+            }
+            else
+            {
+
+                try
+                {
+                    (from p in App.DataBase.FQAs
+                     where p.id_FAQ == currenttrow.id_FAQ
+                     select p).ToList().ForEach(x => x.Name = nameEditFAQs.Text);
+
+                    (from p in App.DataBase.FQAs
+                     where p.id_FAQ == currenttrow.id_FAQ
+                     select p).ToList().ForEach(x => x.About = aboutEditFAQs.Text);
+
+                    (from p in App.DataBase.FQAs
+                     where p.id_FAQ == currenttrow.id_FAQ
+                     select p).ToList().ForEach(x => x.Writer = writerEditFAQs.Text);
+
+                    (from p in App.DataBase.FQAs
+                     where p.id_FAQ == currenttrow.id_FAQ
+                     select p).ToList().ForEach(x => x.id_User = userEditFAQs.SelectedIndex+1);
+
+
+                    App.DataBase.SaveChanges();
+                    errorBlockFAQs.Foreground = Brushes.Green;
+                    errorBlockFAQs.Text = "Пользователь изменён";
+                }
+                catch (Exception ex)
+                {
+                    errorBlockFAQs.Foreground = Brushes.Red;
+                    errorBlockFAQs.Text = ex.Message.ToString();
+                }
+
+            }
         }
     }
 }

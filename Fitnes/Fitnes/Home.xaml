@@ -335,7 +335,9 @@
                                 <TextBlock
                                     x:Name="errorBlockFAQs"
                                     Grid.Row="6"
-                                    Foreground="Red" Margin="190,14,190,15"/>
+                                    Foreground="Red"
+                                    Height="60"
+                                    Width="300"/>
 
                                 <TextBlock 
                                     IsHitTestVisible="False"
@@ -521,7 +523,7 @@
                                     Style="{StaticResource OrangeButton}"
                                     Width="200"
                                     Height="30"
-                                    Click="editFAQs"
+                                    Click="saveEditFAQs"
                                     VerticalAlignment="Center" Margin="240,0,240,0" />
 
                                 <Button
