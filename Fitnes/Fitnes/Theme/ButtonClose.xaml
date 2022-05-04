@@ -16,8 +16,6 @@
                                     Background="{TemplateBinding Background}"                                   
                                     Width="{TemplateBinding Property=Width}" 
                                     Height="{TemplateBinding Property=Height}">
-
-
                         <ContentPresenter 
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>

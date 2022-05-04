@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="clBr" Color="#FF363449" />
 
@@ -196,6 +196,25 @@
                         FontFamily="Fonts/#Lato"
                         Click="close"
                         Style="{StaticResource CloseBt}"/>
+
+                <TextBlock
+                    Text="0:0:0"
+                    x:Name="timerHome"
+                    FontSize="20"
+                    Margin="0,0,20,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Foreground="#CFCFCF"/>
+
+                <TextBlock
+                    Text="У вас до окончания cеанса осталось менее 3-ъ минут"
+                    x:Name="messageOut"
+                    FontSize="16"
+                    Margin="100,0,0,0"
+                    Visibility="Collapsed"
+                    Foreground="Red"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"/>
 
                 <Button Content="__"
                         Width="20"

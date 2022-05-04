@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Fitnes
 {
@@ -11,11 +14,16 @@ namespace Fitnes
     /// </summary>
     public partial class Home : Window
     {
-        Entities.User nowUser; 
+        Entities.User nowUser;
+        int s,m,h;
+        DispatcherTimer timer = new DispatcherTimer();
         public Home(ref Entities.User authUser)
         {
             InitializeComponent();
-
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
             nowUser = authUser;
             switch (authUser.Role)
             {
@@ -43,6 +51,48 @@ namespace Fitnes
             }
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            s++;
+                if (s == 2)
+                {
+                    messageOut.Visibility = Visibility.Visible;
+                }
+                if (s == 7)
+                {
+                    s = 0;
+                    m = 0;
+                    timer.Stop();
+                    OutTimer w = new OutTimer();
+                    w.Show();
+                    this.Close();
+                }
+            if(s>60)
+            {
+                if (m==2)
+               {
+                    messageOut.Visibility = Visibility.Visible;
+               }
+               if(m==5)
+               {
+                    s = 0;
+                    m = 0;
+                    timer.Stop();
+                    OutTimer w = new OutTimer();
+                    w.Show();
+                    this.Close();
+               }
+                m++;
+                s=0;
+                if (m > 60)
+                {
+                    m=0;
+                    h++;
+                }
+            }
+            timerHome.Text = $"{h}:{m}:{s}";
+        }
+
         private void ToolBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -53,6 +103,11 @@ namespace Fitnes
 
         private void close(object sender, RoutedEventArgs e)
         {
+            s = 0;
+            m = 0;
+            timer.Stop();
+            SiningMenu w = new SiningMenu();
+            w.Show();
             this.Close();
         }
 
@@ -394,6 +449,11 @@ namespace Fitnes
                 }
 
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+          
         }
 
         private void backViewFQAs(object sender, RoutedEventArgs e)

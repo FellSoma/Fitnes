@@ -67,3 +67,5 @@ I:\Git\Fitnes\Fitnes\obj\Debug\Theme\tabControl.baml
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.AssemblyReference.cache
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes.csproj.SuggestedBindingRedirects.cache
 I:\Git\Fitnes\Fitnes\obj\Debug\Fitnes_Content.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\OutTimer.g.cs
+I:\Git\Fitnes\Fitnes\obj\Debug\OutTimer.baml
