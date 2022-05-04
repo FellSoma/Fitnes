@@ -54,6 +54,8 @@ namespace Fitnes
         private void timer_Tick(object sender, EventArgs e)
         {
             s++;
+            if(nowUser.Login.ToLower()=="timer")
+            { 
                 if (s == 2)
                 {
                     messageOut.Visibility = Visibility.Visible;
@@ -67,6 +69,7 @@ namespace Fitnes
                     w.Show();
                     this.Close();
                 }
+            }
             if(s>60)
             {
                 if (m==2)

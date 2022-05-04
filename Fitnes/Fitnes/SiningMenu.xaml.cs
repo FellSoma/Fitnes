@@ -20,7 +20,7 @@ namespace Fitnes
             InitializeComponent();
             spCapha.Visibility = Visibility.Hidden; 
             timer.Interval = TimeSpan.FromSeconds(5);
-
+            newImage();
         }
         string name;
         bool check = false;
@@ -74,6 +74,7 @@ namespace Fitnes
                 role = authUser.Role;
                 Home home = new Home(ref authUser);
                 home.Show();
+                this.Close();
             }
             else
             {
@@ -167,11 +168,6 @@ namespace Fitnes
             string[] subs = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             name = subs[5];
             //5 элемен в масиве 
-
-        }
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
 
         }
 

@@ -207,7 +207,7 @@
                     Foreground="#CFCFCF"/>
 
                 <TextBlock
-                    Text="У вас до окончания cеанса осталось менее 3-ъ минут"
+                    Text="У вас до окончания cеанса осталось менее 3-х минут"
                     x:Name="messageOut"
                     FontSize="16"
                     Margin="100,0,0,0"
@@ -301,7 +301,9 @@
                             </TabItem.Content>
                         </TabItem>
 
-                        <TabItem x:Name="viewItem" Header="Вопрос" >
+                        <TabItem x:Name="viewItem" 
+                                 Visibility="Collapsed"
+                                 Header="Вопрос" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="75*"/>

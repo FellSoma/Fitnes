@@ -38,6 +38,8 @@ namespace Fitnes
 
         private void close(object sender, RoutedEventArgs e)
         {
+            SiningMenu w = new SiningMenu();
+            w.Show();
             this.Close();
         }
 
