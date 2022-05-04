@@ -215,6 +215,34 @@
 
             </StackPanel>
 
+            <TextBox                   
+                Height="40"
+                Foreground="#CFCFCF"
+                Width="230"
+                Visibility="Collapsed"
+                Margin="0,40,0,145"
+               Grid.Row="1"
+                FontFamily="Fonts/#Lato"
+                Name="passwordView"
+                Style="{StaticResource Textboxes}"/>
+
+            <Button                   
+                Height="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Width="50"
+                Visibility="Visible"
+                Margin="275,40,0,145"
+                Grid.Row="1"
+                Click="viewPasswordOrange"
+                Name="passwordOrangeView"
+                Style="{StaticResource CloseBt}">
+                <Image Height="40"
+                       Width="40" 
+                       Name="orangeEye"
+                       Source="Images/orangeOpen.png"/>
+            </Button>
+            
             <TextBlock IsHitTestVisible="False"
                        Text="Подтверждение пароля"
                        VerticalAlignment="Center"                                       

@@ -22,12 +22,14 @@ namespace Fitnes
                 case "Администратор       ":
                     {
                         DataGridUsers.ItemsSource = App.DataBase.Users.ToList();
+                        DataGridFAQs.ItemsSource = App.DataBase.FQAs.ToList();
                     }
                     break;
                 case "Тренер":
                     {
                         rbUsers.Visibility = Visibility.Collapsed;
                         rbPoints.Visibility = Visibility.Collapsed;
+                        DataGridFAQs.ItemsSource = App.DataBase.FQAs.ToList();
                     }
                     break;
                 case "Пользователь":
@@ -35,6 +37,7 @@ namespace Fitnes
                         rbUsers.Visibility = Visibility.Collapsed;
                         rbPoints.Visibility = Visibility.Collapsed;
                         rbFaqs.Visibility = Visibility.Collapsed;
+                        DataGridFAQs.ItemsSource = App.DataBase.FQAs.ToList();
                     }
                     break;
             }
@@ -391,6 +394,33 @@ namespace Fitnes
                 }
 
             }
+        }
+
+        private void backViewFQAs(object sender, RoutedEventArgs e)
+        {
+            viewItem.Visibility = Visibility.Collapsed;
+            faqs.Visibility = Visibility.Visible;
+            news.Visibility = Visibility.Visible;
+            home.SelectedIndex = 1;
+        }
+
+        private void viewFQAs(object sender, RoutedEventArgs e)
+        {
+            var currenttrow = DataGridFAQs.SelectedItem as Entities.FQA;
+            viewItem.Visibility = Visibility.Visible;
+            faqs.Visibility = Visibility.Collapsed;
+            news.Visibility = Visibility.Collapsed;
+            home.SelectedIndex = 2;
+            nameViewFAQs.Text = currenttrow.Name;
+            aboutViewFAQs.Text = currenttrow.About;
+            writerViewFAQs.Text = currenttrow.Writer;
+            Entities.User authViewFAQs = null;
+            using (Entities.FitnessDBEntities1 context = new Entities.FitnessDBEntities1())
+            {
+                authViewFAQs = context.Users.Where(b => b.id_User == currenttrow.id_User).FirstOrDefault();
+            }
+            userViewFAQs.Text = authViewFAQs.Login;
+
         }
     }
 }

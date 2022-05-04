@@ -345,5 +345,23 @@ namespace Fitnes
             check = false;
             regisry();
         }
+
+        private void viewPasswordOrange(object sender, RoutedEventArgs e)
+        {
+            string xfs = orangeEye.Source.ToString();
+            if (xfs == "pack://application:,,,/Fitnes;component/Images/orangeOpen.png")
+            {
+                orangeEye.Source = BitmapFrame.Create(new Uri("pack://application:,,,/Fitnes;component/Images/orangeClose.png"));
+                passwordView.Text = passwordBx2.Password;
+                passwordView.Visibility = Visibility.Visible;
+
+            }
+            if (xfs == "pack://application:,,,/Fitnes;component/Images/orangeClose.png")
+            {
+                orangeEye.Source = BitmapFrame.Create(new Uri("pack://application:,,,/Fitnes;component/Images/orangeOpen.png"));
+                passwordView.Text = "";
+                passwordView.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

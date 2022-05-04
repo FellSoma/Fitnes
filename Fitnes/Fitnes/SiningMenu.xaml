@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True" 
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Activated="Window_Activated">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <!--PasswordBoxes-->
         <Style TargetType="PasswordBox"
@@ -50,6 +50,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="Button"
+            x:Key="closeOrange">
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!--Textboxes-->
         <Style TargetType="TextBox"
             x:Key="Textboxes">
@@ -155,7 +166,6 @@
                         Style="{StaticResource CloseBt}"/>
             </Grid>
 
-
             <StackPanel Orientation="Vertical"
                             Grid.Row="1">
 
@@ -184,6 +194,7 @@
                     FontFamily="Fonts/#Lato"
                     Name="Login"
                     Style="{StaticResource Textboxes}"/>
+                
 
                 <PasswordBox                  
                     Height="40"
@@ -239,14 +250,36 @@
                     Margin="15"
                     Style="{StaticResource OrangeButton}"/>
 
-                <DataGrid x:Name="TestDataGrid" AutoGenerateColumns="False" ColumnWidth="*">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
-                        <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
             </StackPanel>
+
+            <TextBox                   
+                Height="40"
+                Foreground="#CFCFCF"
+                Width="230"
+                Visibility="Collapsed"
+                Margin="0,0,0,145"
+               Grid.Row="1"
+                FocusableChanged="emptyMethod"
+                FontFamily="Fonts/#Lato"
+                Name="passwordView"
+                Style="{StaticResource Textboxes}"/>
+
+            <Button                   
+                Height="50"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Width="50"
+                Visibility="Visible"
+                Style="{StaticResource closeOrange}"
+                Margin="275,0,0,145"
+                Grid.Row="1"
+                Click="viewPasswordOrange"
+                Name="passwordOrangeView">
+                <Image Height="40"
+                       Width="40" 
+                       Name="orangeEye"
+                       Source="Images/orangeOpen.png"/>
+            </Button>
 
             <TextBlock IsHitTestVisible="False"
                        Text="Пароль"

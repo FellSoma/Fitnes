@@ -20,7 +20,6 @@ namespace Fitnes
             InitializeComponent();
             spCapha.Visibility = Visibility.Hidden; 
             timer.Interval = TimeSpan.FromSeconds(5);
-            TestDataGrid.ItemsSource = App.DataBase.Users.ToList();
 
         }
         string name;
@@ -202,6 +201,24 @@ namespace Fitnes
             else
             {
                 ErrorBlock.Text = "Заполните поля данных";
+            }
+        }
+        
+        private void viewPasswordOrange(object sender, RoutedEventArgs e)
+        {
+            string xfs = orangeEye.Source.ToString();
+            if (xfs == "pack://application:,,,/Fitnes;component/Images/orangeOpen.png")
+            {
+                orangeEye.Source = BitmapFrame.Create(new Uri("pack://application:,,,/Fitnes;component/Images/orangeClose.png"));
+                passwordView.Text = passwordBx.Password;
+                passwordView.Visibility = Visibility.Visible;
+
+            }
+            if (xfs == "pack://application:,,,/Fitnes;component/Images/orangeClose.png")
+                {
+                orangeEye.Source = BitmapFrame.Create(new Uri("pack://application:,,,/Fitnes;component/Images/orangeOpen.png"));
+                passwordView.Text = "";
+                passwordView.Visibility = Visibility.Hidden;
             }
         }
     }
